@@ -19,12 +19,14 @@ class _ListPengaduanUserState extends State<ListPengaduanUser> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pengaduan Saya",
-            style: GoogleFonts.poppins(
-                textStyle: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.w500))),
+        backgroundColor: Colors.purple,
+          centerTitle: true,
+          title: Text("Pengaduan Saya",
+              style: GoogleFonts.poppins(
+                  textStyle: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500))),
       ),
       body: SingleChildScrollView(
         child: Padding(
