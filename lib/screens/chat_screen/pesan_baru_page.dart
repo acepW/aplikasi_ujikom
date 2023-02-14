@@ -14,7 +14,7 @@ class HalamanPesanBaruPage extends StatelessWidget {
       User? user = FirebaseAuth.instance.currentUser;
       if (user != null) {
         DocumentSnapshot userData = await FirebaseFirestore.instance
-            .collection('users')
+            .collection('akun')
             .doc(user.uid)
             .get();
         UserModel userModel = UserModel.fromSnap(userData);

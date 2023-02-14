@@ -59,7 +59,7 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
       User? user = FirebaseAuth.instance.currentUser;
 
       DocumentSnapshot userData = await FirebaseFirestore.instance
-          .collection('users')
+          .collection('akun')
           .doc(user!.uid)
           .get();
       UserModel userModel = UserModel.fromSnap(userData);
@@ -158,7 +158,6 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
                 ),
                 TextFormField(
                   textInputAction: TextInputAction.next,
-                  
                   controller: _judulController,
                   validator: (value) {
                     if (value!.isEmpty) {
