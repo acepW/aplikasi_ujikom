@@ -47,7 +47,7 @@ class _ListPengaduanPetugasState extends State<ListPengaduanPetugas> {
                     return Padding(
                       padding: const EdgeInsets.only(top: 200),
                       child: Center(
-                        child: Text("Belum Ada Aduanmu",
+                        child: Text("Belum Ada Aduan",
                             style: GoogleFonts.poppins(
                                 textStyle: const TextStyle(
                                     color: Colors.black,

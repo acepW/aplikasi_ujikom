@@ -178,7 +178,7 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                   keyboardType: TextInputType.visiblePassword,
                   controller: _passTextController,
                   validator: (value) {
-                    if (value!.isEmpty || value.length < 7) {
+                    if (value!.isEmpty && value.length <= 6) {
                       return "Please enter a valid password";
                     } else {
                       return null;

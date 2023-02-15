@@ -206,7 +206,7 @@ class _HalamanPesanState extends State<HalamanPesan> {
 
                               return FutureBuilder(
                                 future: FirebaseFirestore.instance
-                                    .collection('users')
+                                    .collection('akun')
                                     .doc(friendId)
                                     .get(),
                                 builder:

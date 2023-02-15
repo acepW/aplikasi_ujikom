@@ -323,7 +323,7 @@ class _DetailAduanPetugasState extends State<DetailAduanPetugas> {
                               color: Colors.green,
                               borderRadius: BorderRadius.circular(15)),
                           child: Center(
-                            child: Text("Verivikasi",
+                            child: Text("Verifikasi",
                                 style: GoogleFonts.rubik(
                                     textStyle: const TextStyle(
                                         color: Colors.white,

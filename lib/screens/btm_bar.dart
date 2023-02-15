@@ -19,7 +19,7 @@ class BottomBarScreen extends StatefulWidget {
 }
 
 class _BottomBarScreenState extends State<BottomBarScreen> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
   final List<Map<String, dynamic>> _pages = [
     {'page': const HomeScreens(), 'title': 'Home Screen'},
     {'page': PengaduanScreens(), 'title': 'Pengaduan Screen'},
@@ -41,6 +41,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
       body: _pages[_selectedIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
+        
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
         showUnselectedLabels: false,

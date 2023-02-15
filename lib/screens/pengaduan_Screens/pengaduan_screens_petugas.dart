@@ -204,7 +204,7 @@ class _PengaduanScreensPetugasState extends State<PengaduanScreensPetugas> {
                         begin:Alignment.centerLeft ,
                         end:Alignment.centerRight ,
                         colors: [
-                          Colors.yellow,
+                          Colors.red,
                           Colors.transparent
                         ])
                   ),

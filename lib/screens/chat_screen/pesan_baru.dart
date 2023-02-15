@@ -2,6 +2,7 @@ import 'package:aplikasi_ujikom/model/user_model.dart';
 import 'package:aplikasi_ujikom/screens/chat_screen/halaman_chat.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 
@@ -25,6 +26,7 @@ class _PesanBaruScreenState extends State<PesanBaruScreen> {
 
   @override
   Widget build(BuildContext context) {
+     User? user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -84,6 +86,9 @@ class _PesanBaruScreenState extends State<PesanBaruScreen> {
                 FutureBuilder(
                   future: FirebaseFirestore.instance
                       .collection('akun')
+                      
+                     
+                      
                       .where(
                         'username',
                         isGreaterThanOrEqualTo: searchController.text,

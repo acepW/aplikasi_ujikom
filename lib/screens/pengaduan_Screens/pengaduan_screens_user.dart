@@ -267,13 +267,13 @@ class _PengaduanScreensUserState extends State<PengaduanScreensUser> {
                             "Aduan",
                             style: GoogleFonts.rubik(
                                 textStyle: TextStyle(
-                                    color: Colors.white, fontSize: 20)),
+                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
                           ),
                           Text(
                             "Di Tolak",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.rubik(
                                 textStyle: TextStyle(
-                                    color: Colors.white, fontSize: 20)),
+                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
                           ),
                         ],
                       ),
