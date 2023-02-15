@@ -93,7 +93,7 @@ class _HalamanChatState extends State<HalamanChat> {
                               children: [
                                 Text(
                                   widget.friendName,
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.rubik(
                                       textStyle: const TextStyle(
                                           fontSize: 14,
                                           color: Colors.white,
@@ -110,7 +110,7 @@ class _HalamanChatState extends State<HalamanChat> {
                               children: [
                                 Text(
                                   widget.friendUsername,
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.rubik(
                                       textStyle: TextStyle(
                                           color: Colors.white.withOpacity(0.5),
                                           fontSize: 10,

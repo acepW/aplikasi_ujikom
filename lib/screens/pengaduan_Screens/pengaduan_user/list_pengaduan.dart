@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:aplikasi_ujikom/screens/pengaduan_Screens/pengaduan_user/widget/aduan_card.dart';
 import 'package:aplikasi_ujikom/screens/pengaduan_Screens/pengaduan_user/widget/detail_aduan.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,13 +21,17 @@ class _ListPengaduanUserState extends State<ListPengaduanUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.white,
           centerTitle: true,
+          leading: IconButton(onPressed: (){
+            Navigator.pop(context);
+          }, icon: Icon(Icons.arrow_back,color: Colors.black,)),
           title: Text("Pengaduan Saya",
-              style: GoogleFonts.poppins(
+              style: GoogleFonts.rubik(
                   textStyle: const TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 20,
                       fontWeight: FontWeight.w500))),
       ),
@@ -68,9 +75,10 @@ class _ListPengaduanUserState extends State<ListPengaduanUser> {
                         String photoUrl = snapshot.data.docs[index]['photoUrl'];
                         String postId = snapshot.data.docs[index]['postId'];
                         String status = snapshot.data.docs[index]['status'];
-                        return InkWell(
-                          onTap: () {
-                            Navigator.push(
+                        return CardAduan(
+                         time: time,
+                          judul: judul, deskripsi: deskripsi, onTap: (){
+                          Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => DetailAduanUSer(
@@ -81,43 +89,7 @@ class _ListPengaduanUserState extends State<ListPengaduanUser> {
                                         imageUrl: imageUrl,
                                         name: name,
                                         tanggal: time)));
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 15),
-                            child: Container(
-                              width: MediaQuery.of(context).size.width,
-                              height: 200,
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.black),
-                                  borderRadius: BorderRadius.circular(30)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: Column(
-                                  children: [
-                                    Text(judul,
-                                        style: GoogleFonts.poppins(
-                                            textStyle: const TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 25,
-                                                fontWeight: FontWeight.w500))),
-                                    Flexible(
-                                      child: Text(deskripsi,
-                                          textAlign: TextAlign.center,
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 5,
-                                          style: GoogleFonts.poppins(
-                                              textStyle: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 15,
-                                                  fontWeight:
-                                                      FontWeight.w500))),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        );
+                        });
                       });
                 }
                 return Center(

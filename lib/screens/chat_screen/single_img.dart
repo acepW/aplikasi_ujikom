@@ -68,7 +68,7 @@ class SingleImage extends StatelessWidget {
                   : const EdgeInsets.only(left: 9),
               child: Text(
                 DateFormat.jm().format(date),
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.rubik(
                   textStyle: const TextStyle(
                       fontSize: 10, fontWeight: FontWeight.w400),
                 ),

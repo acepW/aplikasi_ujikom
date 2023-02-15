@@ -49,13 +49,38 @@ class _PengaduanScreensPetugasState extends State<PengaduanScreensPetugas> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   height: 150,
-                  color: Colors.purple,
-                  child: Center(
-                    child: Text(
-                      "Semua Aduan",
-                      style: GoogleFonts.poppins(
-                          textStyle:
-                              TextStyle(color: Colors.white, fontSize: 20)),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    gradient: LinearGradient(
+                        begin:Alignment.centerLeft ,
+                        end:Alignment.centerRight ,
+                        colors: [
+                          Colors.black,
+                          Colors.transparent
+                        ])
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 20, top: 50),
+                    child: Container(
+                      width: 150,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Semua",
+                            style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
+                          ),
+                          Text(
+                            "Aduan User",
+                            style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -73,13 +98,38 @@ class _PengaduanScreensPetugasState extends State<PengaduanScreensPetugas> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   height: 150,
-                  color: Colors.purple,
-                  child: Center(
-                    child: Text(
-                      "Aduan Belum Di Proses",
-                      style: GoogleFonts.poppins(
-                          textStyle:
-                              TextStyle(color: Colors.white, fontSize: 20)),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    gradient: LinearGradient(
+                        begin:Alignment.centerLeft ,
+                        end:Alignment.centerRight ,
+                        colors: [
+                          Colors.yellow,
+                          Colors.transparent
+                        ])
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 20, top: 50),
+                    child: Container(
+                      width: 150,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Aduan",
+                            style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
+                          ),
+                          Text(
+                            "Di Proses",
+                            style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -98,13 +148,38 @@ class _PengaduanScreensPetugasState extends State<PengaduanScreensPetugas> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   height: 150,
-                  color: Colors.purple,
-                  child: Center(
-                    child: Text(
-                      "Aduan Sudah Di Verifikasi",
-                      style: GoogleFonts.poppins(
-                          textStyle:
-                              TextStyle(color: Colors.white, fontSize: 20)),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    gradient: LinearGradient(
+                        begin:Alignment.centerLeft ,
+                        end:Alignment.centerRight ,
+                        colors: [
+                          Colors.green,
+                          Colors.transparent
+                        ])
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 20, top: 50),
+                    child: Container(
+                      width: 150,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Aduan",
+                            style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
+                          ),
+                          Text(
+                            "Di Verefikasi",
+                            style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -123,13 +198,38 @@ class _PengaduanScreensPetugasState extends State<PengaduanScreensPetugas> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   height: 150,
-                  color: Colors.purple,
-                  child: Center(
-                    child: Text(
-                      "Aduan Di Tolak",
-                      style: GoogleFonts.poppins(
-                          textStyle:
-                              TextStyle(color: Colors.white, fontSize: 20)),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    gradient: LinearGradient(
+                        begin:Alignment.centerLeft ,
+                        end:Alignment.centerRight ,
+                        colors: [
+                          Colors.red,
+                          Colors.transparent
+                        ])
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 20, top: 50),
+                    child: Container(
+                      width: 150,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Aduan",
+                            style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
+                          ),
+                          Text(
+                            "Di Tolak",
+                            style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

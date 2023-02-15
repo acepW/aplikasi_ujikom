@@ -112,7 +112,7 @@ class _EditProfilScreenState extends State<EditProfilScreen> {
               centerTitle: true,
               title: Text(
                 'Edit Profil',
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.rubik(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                     color: Colors.black),
@@ -185,7 +185,7 @@ class _EditProfilScreenState extends State<EditProfilScreen> {
                           children: [
                             Text(
                               'Nama Lengkap',
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.rubik(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.black),
@@ -199,7 +199,7 @@ class _EditProfilScreenState extends State<EditProfilScreen> {
                               decoration: InputDecoration(
                                 counter: Offstage(),
                                 hintText: 'Masukan Nama',
-                                hintStyle: GoogleFonts.poppins(
+                                hintStyle: GoogleFonts.rubik(
                                     fontSize: 10,
                                     fontWeight: FontWeight.w500,
                                     color: Colors.black),
@@ -226,7 +226,7 @@ class _EditProfilScreenState extends State<EditProfilScreen> {
                           children: [
                             Text(
                               'User name',
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.rubik(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.black),
@@ -255,7 +255,7 @@ class _EditProfilScreenState extends State<EditProfilScreen> {
                                       width: 1.5, color: Colors.purple),
                                 ),
                                 hintText: 'Masukan Nama',
-                                hintStyle: GoogleFonts.poppins(
+                                hintStyle: GoogleFonts.rubik(
                                     fontSize: 10,
                                     fontWeight: FontWeight.w500,
                                     color: Colors.black),
@@ -320,7 +320,7 @@ class _EditProfilScreenState extends State<EditProfilScreen> {
                               child: Center(
                                 child: Text(
                                   'Simpan',
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.rubik(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w600,
                                       color: Colors.white),

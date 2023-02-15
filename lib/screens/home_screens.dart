@@ -33,7 +33,7 @@ class _HomeScreensState extends State<HomeScreens> {
           backgroundColor: Colors.purple,
           centerTitle: true,
           title: Text("Aplikasi Ujikom",
-              style: GoogleFonts.poppins(
+              style: GoogleFonts.rubik(
                   textStyle: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -41,14 +41,14 @@ class _HomeScreensState extends State<HomeScreens> {
           bottom: TabBar(indicatorColor: Colors.white, tabs: [
             Text(
               "Chat",
-              style: GoogleFonts.poppins(
+              style: GoogleFonts.rubik(
                   textStyle: const TextStyle(
                       color: Colors.white,
                       fontSize: 15,
                       fontWeight: FontWeight.w500)),
             ),
             Text("Pencarian",
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.rubik(
                     textStyle: const TextStyle(
                         color: Colors.white,
                         fontSize: 15,

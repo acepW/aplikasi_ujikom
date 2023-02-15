@@ -41,6 +41,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
       body: _pages[_selectedIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
+        
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
         showUnselectedLabels: false,
@@ -51,12 +52,12 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon:
-                Icon(_selectedIndex == 0 ? IconlyBold.chat : IconlyLight.chat),
+                Icon(_selectedIndex == 0 ? IconlyBold.chat : IconlyLight.chat,color: Colors.purple,),
             label: "Chat",
           ),
           BottomNavigationBarItem(
             icon: Icon(
-                _selectedIndex == 1 ? IconlyBold.addUser : IconlyLight.addUser),
+                _selectedIndex == 1 ? IconlyBold.addUser : IconlyLight.addUser,color: Colors.purple,),
             label: "Pengaduan",
           ),
         ],

@@ -74,7 +74,7 @@ class _HalamanPesanState extends State<HalamanPesan> {
                             padding: const EdgeInsets.only(top: 200),
                             child: Center(
                               child: Text("Mulai Lah Percakapan Mu",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.rubik(
                                       textStyle: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 20,
@@ -119,7 +119,7 @@ class _HalamanPesanState extends State<HalamanPesan> {
                                         color: Colors.purple),
                                     child: Center(
                                         child: Text("1",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.rubik(
                                                 textStyle: const TextStyle(
                                                     fontSize: 10,
                                                     color: Colors.white,
@@ -169,7 +169,7 @@ class _HalamanPesanState extends State<HalamanPesan> {
                                     child: Text(
                                       overflow: TextOverflow.ellipsis,
                                       "$lastMsg",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.rubik(
                                           textStyle: const TextStyle(
                                               fontSize: 12,
                                               fontWeight: FontWeight.w400)),
@@ -193,7 +193,7 @@ class _HalamanPesanState extends State<HalamanPesan> {
                                         Text(
                                           overflow: TextOverflow.ellipsis,
                                           "Foto",
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.rubik(
                                               textStyle: const TextStyle(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.w400)),
@@ -206,7 +206,7 @@ class _HalamanPesanState extends State<HalamanPesan> {
 
                               return FutureBuilder(
                                 future: FirebaseFirestore.instance
-                                    .collection('users')
+                                    .collection('akun')
                                     .doc(friendId)
                                     .get(),
                                 builder:
@@ -318,7 +318,7 @@ class _HalamanPesanState extends State<HalamanPesan> {
                                                                 Text(
                                                                   friend[
                                                                       'name'],
-                                                                  style: GoogleFonts.poppins(
+                                                                  style: GoogleFonts.rubik(
                                                                       textStyle: const TextStyle(
                                                                           fontSize:
                                                                               14,
@@ -346,7 +346,7 @@ class _HalamanPesanState extends State<HalamanPesan> {
                                                           DateFormat.jm()
                                                               .format(last),
                                                           style: GoogleFonts
-                                                              .poppins(
+                                                              .rubik(
                                                             textStyle:
                                                                 const TextStyle(
                                                                     fontSize:

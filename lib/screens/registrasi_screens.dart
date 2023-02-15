@@ -122,7 +122,7 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
               children: [
                 Text("Lakukan registrasi kamu disini",
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.rubik(
                         textStyle: const TextStyle(
                             color: Colors.purple,
                             fontSize: 30,
@@ -144,6 +144,11 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                       return null;
                     }
                   },
+                  style: GoogleFonts.rubik(
+                          textStyle: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500)),
                   decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderSide:
@@ -156,8 +161,8 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       hintText: "Email",
-                      icon: Icon(Icons.email),
-                      hintStyle: GoogleFonts.poppins(
+                      
+                      hintStyle: GoogleFonts.rubik(
                           textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 15,
@@ -173,12 +178,17 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                   keyboardType: TextInputType.visiblePassword,
                   controller: _passTextController,
                   validator: (value) {
-                    if (value!.isEmpty || value.length < 7) {
+                    if (value!.isEmpty && value.length <= 6) {
                       return "Please enter a valid password";
                     } else {
                       return null;
                     }
                   },
+                  style: GoogleFonts.rubik(
+                          textStyle: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500)),
                   onEditingComplete: () =>
                       FocusScope.of(context).requestFocus(_userNameFocusNode),
                   decoration: InputDecoration(
@@ -206,10 +216,8 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       hintText: "Password",
-                      icon: Icon(
-                        Icons.password,
-                      ),
-                      hintStyle: GoogleFonts.poppins(
+                     
+                      hintStyle: GoogleFonts.rubik(
                           textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 15,
@@ -230,6 +238,11 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                       return null;
                     }
                   },
+                  style: GoogleFonts.rubik(
+                          textStyle: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500)),
                   decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderSide:
@@ -242,8 +255,8 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       hintText: "Nama Lengkap",
-                      icon: Icon(Icons.people),
-                      hintStyle: GoogleFonts.poppins(
+                      
+                      hintStyle: GoogleFonts.rubik(
                           textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 15,
@@ -260,6 +273,11 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                       return null;
                     }
                   },
+                  style: GoogleFonts.rubik(
+                          textStyle: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500)),
                   focusNode: _userNameFocusNode,
                   textInputAction: TextInputAction.next,
                   onEditingComplete: () =>
@@ -277,8 +295,8 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       hintText: "Username",
-                      icon: Icon(Icons.people),
-                      hintStyle: GoogleFonts.poppins(
+                     
+                      hintStyle: GoogleFonts.rubik(
                           textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 15,
@@ -300,7 +318,7 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                     child: Center(
                       child: Text(
                         "Registrasi",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.rubik(
                             textStyle: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 15,
@@ -319,7 +337,7 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                     children: [
                       Text(
                         "Sudah punya akun?",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.rubik(
                             textStyle: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 10,
@@ -333,7 +351,7 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                                     builder: (context) => LoginScreens()));
                           },
                           child: Text("Login di sini",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.rubik(
                                   textStyle: const TextStyle(
                                       color: Colors.purple,
                                       fontSize: 10,
