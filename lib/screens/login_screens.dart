@@ -113,6 +113,11 @@ class _LoginScreensState extends State<LoginScreens> {
                               return null;
                             }
                           },
+                          style: GoogleFonts.rubik(
+                                  textStyle: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500)),
                           decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -125,7 +130,7 @@ class _LoginScreensState extends State<LoginScreens> {
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               hintText: "Email",
-                              hintStyle: GoogleFonts.poppins(
+                              hintStyle: GoogleFonts.rubik(
                                   textStyle: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 15,
@@ -150,6 +155,11 @@ class _LoginScreensState extends State<LoginScreens> {
                               return null;
                             }
                           },
+                          style: GoogleFonts.rubik(
+                                  textStyle: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500)),
                           decoration: InputDecoration(
                               suffixIcon: GestureDetector(
                                 onTap: () {
@@ -175,7 +185,7 @@ class _LoginScreensState extends State<LoginScreens> {
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               hintText: "Password",
-                              hintStyle: GoogleFonts.poppins(
+                              hintStyle: GoogleFonts.rubik(
                                   textStyle: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 15,
@@ -197,7 +207,7 @@ class _LoginScreensState extends State<LoginScreens> {
                             child: Center(
                               child: Text(
                                 "Login",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.rubik(
                                     textStyle: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 15,
@@ -216,7 +226,7 @@ class _LoginScreensState extends State<LoginScreens> {
                             children: [
                               Text(
                                 "Belum punya akun?",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.rubik(
                                     textStyle: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 10,
@@ -231,7 +241,7 @@ class _LoginScreensState extends State<LoginScreens> {
                                                 RegistrasiScreens()));
                                   },
                                   child: Text("Daftar di sini",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.rubik(
                                           textStyle: const TextStyle(
                                               color: Colors.purple,
                                               fontSize: 10,

@@ -153,9 +153,7 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
             key: _formKey,
             child: Column(
               children: [
-                SizedBox(
-                  height: 50,
-                ),
+               
                 TextFormField(
                   textInputAction: TextInputAction.next,
                   controller: _judulController,
@@ -166,7 +164,8 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
                       return null;
                     }
                   },
-                  style: GoogleFonts.poppins(
+                  maxLength: 30,
+                  style: GoogleFonts.rubik(
                       textStyle: const TextStyle(
                           color: Colors.black,
                           fontSize: 15,
@@ -175,15 +174,16 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
                       focusedBorder: OutlineInputBorder(
                         borderSide:
                             const BorderSide(width: 1, color: Colors.purple),
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(5),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide:
                             const BorderSide(width: 1, color: Colors.purple),
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(5),
                       ),
+                      
                       hintText: "Judul Pengaduan",
-                      hintStyle: GoogleFonts.poppins(
+                      hintStyle: GoogleFonts.rubik(
                           textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 15,
@@ -200,10 +200,10 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
                       return null;
                     }
                   },
-                  maxLines: 20,
+                  maxLines: 50,
                   minLines: 1,
                   controller: _deskripsiController,
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.rubik(
                       textStyle: const TextStyle(
                           color: Colors.black,
                           fontSize: 15,
@@ -212,15 +212,15 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
                       focusedBorder: OutlineInputBorder(
                         borderSide:
                             const BorderSide(width: 1, color: Colors.purple),
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(5),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide:
                             const BorderSide(width: 1, color: Colors.purple),
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(5),
                       ),
                       hintText: "Deskripsi Pengaduan",
-                      hintStyle: GoogleFonts.poppins(
+                      hintStyle: GoogleFonts.rubik(
                           textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 15,
@@ -231,7 +231,7 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
                 ),
                 Text("Tambahkan Gambar Jika Ada",
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.rubik(
                         textStyle: const TextStyle(
                             color: Colors.black,
                             fontSize: 25,
@@ -268,15 +268,26 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
                       });
                     },
                     child: Text("Clear",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.rubik(
                             textStyle: const TextStyle(
                                 color: Colors.red,
                                 fontSize: 20,
                                 fontWeight: FontWeight.w400)))),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: ()async {
+                      try {
+                        Uint8List file = await pickImage(ImageSource.gallery);
+                        if (file != null) {
+                          setState(() {
+                            _pickedImage = file;
+                          });
+                        }
+                      } catch (e) {
+                        print(e);
+                      }
+                    },
                     child: Text(" Update Image",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.rubik(
                             textStyle: const TextStyle(
                                 color: Colors.blue,
                                 fontSize: 20,
@@ -299,7 +310,7 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
                           ? CircularProgressIndicator()
                           : Text(
                               "Submit",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.rubik(
                                   textStyle: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 15,
@@ -343,7 +354,7 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
                   height: 20,
                 ),
                 TextButton(
-                    onPressed: (() async {
+                    onPressed: () async {
                       try {
                         Uint8List file = await pickImage(ImageSource.gallery);
                         if (file != null) {
@@ -354,9 +365,9 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
                       } catch (e) {
                         print(e);
                       }
-                    }),
+                    },
                     child: Text("Chose an Image",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.rubik(
                             textStyle: const TextStyle(
                                 color: Colors.blue,
                                 fontSize: 20,

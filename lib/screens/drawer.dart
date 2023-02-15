@@ -64,7 +64,7 @@ class EditButton extends StatelessWidget {
                 width: 10,
               ),
               Text("Edit Profile",
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.rubik(
                       textStyle: const TextStyle(
                           color: Colors.black,
                           fontSize: 20,
@@ -111,7 +111,7 @@ class KeluarButton extends StatelessWidget {
                 width: 10,
               ),
               Text("Keluar",
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.rubik(
                       textStyle: const TextStyle(
                           color: Colors.black,
                           fontSize: 20,
@@ -210,7 +210,7 @@ class _TopDrawerState extends State<TopDrawer> {
                 height: 10,
               ),
               Text(_fullName == null ? "-" : _fullName!,
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.rubik(
                       textStyle: const TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -219,7 +219,7 @@ class _TopDrawerState extends State<TopDrawer> {
                 height: 5,
               ),
               Text(_userName == null ? "-" : _userName!,
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.rubik(
                       textStyle: const TextStyle(
                           color: Colors.white,
                           fontSize: 15,

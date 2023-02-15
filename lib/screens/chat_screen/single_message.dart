@@ -45,7 +45,7 @@ class SingleMessage extends StatelessWidget {
                 ),
                 child: Text(
                   message,
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.rubik(
                       textStyle: TextStyle(
                           fontSize: 13,
                           color: isMe ? Colors.white : Colors.black,
@@ -62,7 +62,7 @@ class SingleMessage extends StatelessWidget {
                   : const EdgeInsets.only(left: 9),
               child: Text(
                 DateFormat.jm().format(date),
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.rubik(
                   textStyle: const TextStyle(
                       fontSize: 10, fontWeight: FontWeight.w400),
                 ),

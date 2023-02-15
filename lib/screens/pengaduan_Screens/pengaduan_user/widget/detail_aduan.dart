@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:full_screen_image_null_safe/full_screen_image_null_safe.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 class DetailAduanUSer extends StatefulWidget {
   const DetailAduanUSer(
@@ -25,6 +26,33 @@ class DetailAduanUSer extends StatefulWidget {
 class _DetailAduanUSerState extends State<DetailAduanUSer> {
   @override
   Widget build(BuildContext context) {
+     Widget status = Container();
+    switch (widget.status) {
+      case "di periksa":
+        status = Text("Sedang Di Periksa",
+            style: GoogleFonts.rubik(
+                textStyle: TextStyle(
+                    color: Colors.red,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500)));
+        break;
+      case "di verifikasi":
+        status = Text("Di Verifikasi",
+            style: GoogleFonts.rubik(
+                textStyle: TextStyle(
+                    color: Colors.green,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500)));
+        break;
+      case "di tolak":
+        status = Text("Di Tolak",
+            style: GoogleFonts.rubik(
+                textStyle: TextStyle(
+                    color: Colors.red,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500)));
+        break;
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -43,7 +71,7 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
           width: MediaQuery.of(context).size.width,
           child: Padding(
             padding:
-                const EdgeInsets.only(left: 20, right: 20, top: 50, bottom: 30),
+                const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 30),
             child: Column(
               children: [
                 Container(
@@ -52,11 +80,11 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text("Ditulis oleh ${widget.name}",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.rubik(
                               textStyle: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 25,
-                                  fontWeight: FontWeight.w500))),
+                                  fontWeight: FontWeight.bold))),
                       Spacer(),
                       IconButton(
                           onPressed: () {
@@ -83,12 +111,13 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text("Pada Tanggal",
-                          style: GoogleFonts.poppins(
+                      Text("Pada ${ DateFormat.yMd().add_jm()
+                                                              .format(widget.tanggal)}",
+                          style: GoogleFonts.rubik(
                               textStyle: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 12,
-                                  fontWeight: FontWeight.w500))),
+                                  fontWeight: FontWeight.w400))),
                     ],
                   ),
                 ),
@@ -100,17 +129,7 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
-                          widget.status == "di periksa"
-                              ? "Sedang Di Periksa"
-                              : "Di Verifikasi",
-                          style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                  color: widget.status == "di periksa"
-                                      ? Colors.red
-                                      : Colors.green,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w500))),
+                      status
                     ],
                   ),
                 ),
@@ -120,20 +139,21 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                 Container(
                   width: MediaQuery.of(context).size.width,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Flexible(
                         child: Text(widget.judul,
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.poppins(
+                            textAlign: TextAlign.start,
+                            style: GoogleFonts.rubik(
                                 textStyle: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 25,
-                                    fontWeight: FontWeight.bold))),
+                                    fontWeight: FontWeight.w500))),
                       ),
                     ],
                   ),
                 ),
+                SizedBox(height: 10,),
                 Container(
                   width: MediaQuery.of(context).size.width,
                   child: Row(
@@ -141,10 +161,10 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                     children: [
                       Flexible(
                         child: Text(widget.deskripsi,
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.rubik(
                                 textStyle: const TextStyle(
                                     color: Colors.black,
-                                    fontSize: 18,
+                                    fontSize: 15,
                                     fontWeight: FontWeight.w400))),
                       ),
                     ],
@@ -180,7 +200,7 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                             Flexible(
                               child: Text("Tanggapan",
                                   textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.rubik(
                                       textStyle: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 25,
@@ -192,153 +212,156 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                       SizedBox(
                         height: 10,
                       ),
-                      StreamBuilder(
-                          stream: FirebaseFirestore.instance
-                              .collection('aduan')
-                              .doc(widget.postId)
-                              .collection('tanggapan')
-                              .snapshots(),
-                          builder: (context, AsyncSnapshot snapshot) {
-                            if (snapshot.hasData) {
-                              if (snapshot.data.docs.length < 1) {
-                                return Padding(
-                                  padding: const EdgeInsets.only(top: 15),
-                                  child: Text("Belum ada Tanggapan",
-                                      style: GoogleFonts.poppins(
-                                          textStyle: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500))),
-                                );
-                              }
-                              return ListView.builder(
-                                  shrinkWrap: true,
-                                  itemCount: snapshot.data.docs.length,
-                                  physics: NeverScrollableScrollPhysics(),
-                                  itemBuilder: (context, index) {
-                                    String name =
-                                        snapshot.data.docs[index]['name'];
-                                    String tanggapan =
-                                        snapshot.data.docs[index]['tanggapan'];
-                                    var time = snapshot
-                                        .data.docs[index]['createdAt']
-                                        .toDate();
-
-                                    String userId =
-                                        snapshot.data.docs[index]['userId'];
-                                    String photoUrl =
-                                        snapshot.data.docs[index]['photoUrl'];
-                                    String tanggapanId = snapshot
-                                        .data.docs[index]['tanggapanId'];
-
-                                    return Padding(
-                                      padding: const EdgeInsets.only(top: 7),
-                                      child: Container(
-                                        child: Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            photoUrl == ""
-                                                ? CircleAvatar(
-                                                    radius: 25,
-                                                    backgroundImage: NetworkImage(
-                                                        'https://i.stack.imgur.com/l60Hf.png'),
-                                                  )
-                                                : CircleAvatar(
-                                                    radius: 25,
-                                                    backgroundColor:
-                                                        Colors.grey,
-                                                    backgroundImage:
-                                                        NetworkImage(photoUrl)),
-                                            Expanded(
-                                              child: Container(
-                                                width: MediaQuery.of(context)
-                                                    .size
-                                                    .width,
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Container(
-                                                        width: MediaQuery.of(
-                                                                context)
-                                                            .size
-                                                            .width,
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Flexible(
-                                                              child: Text(name,
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
-                                                                  style: GoogleFonts.poppins(
-                                                                      textStyle: const TextStyle(
-                                                                          color: Colors
-                                                                              .black,
-                                                                          fontSize:
-                                                                              15,
-                                                                          fontWeight:
-                                                                              FontWeight.bold))),
-                                                            ),
-                                                          ],
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: StreamBuilder(
+                            stream: FirebaseFirestore.instance
+                                .collection('aduan')
+                                .doc(widget.postId)
+                                .collection('tanggapan')
+                                .snapshots(),
+                            builder: (context, AsyncSnapshot snapshot) {
+                              if (snapshot.hasData) {
+                                if (snapshot.data.docs.length < 1) {
+                                  return Padding(
+                                    padding: const EdgeInsets.only(top: 15),
+                                    child: Text("Belum ada Tanggapan",
+                                        style: GoogleFonts.rubik(
+                                            textStyle: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w500))),
+                                  );
+                                }
+                                return ListView.builder(
+                                    shrinkWrap: true,
+                                    itemCount: snapshot.data.docs.length,
+                                    physics: NeverScrollableScrollPhysics(),
+                                    itemBuilder: (context, index) {
+                                      String name =
+                                          snapshot.data.docs[index]['name'];
+                                      String tanggapan =
+                                          snapshot.data.docs[index]['tanggapan'];
+                                      var time = snapshot
+                                          .data.docs[index]['createdAt']
+                                          .toDate();
+                      
+                                      String userId =
+                                          snapshot.data.docs[index]['userId'];
+                                      String photoUrl =
+                                          snapshot.data.docs[index]['photoUrl'];
+                                      String tanggapanId = snapshot
+                                          .data.docs[index]['tanggapanId'];
+                      
+                                      return Padding(
+                                        padding: const EdgeInsets.only(top: 7),
+                                        child: Container(
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              photoUrl == ""
+                                                  ? CircleAvatar(
+                                                      radius: 25,
+                                                      backgroundImage: NetworkImage(
+                                                          'https://i.stack.imgur.com/l60Hf.png'),
+                                                    )
+                                                  : CircleAvatar(
+                                                      radius: 25,
+                                                      backgroundColor:
+                                                          Colors.grey,
+                                                      backgroundImage:
+                                                          NetworkImage(photoUrl)),
+                                              Expanded(
+                                                child: Container(
+                                                  width: MediaQuery.of(context)
+                                                      .size
+                                                      .width,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(10),
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(8.0),
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Container(
+                                                          width: MediaQuery.of(
+                                                                  context)
+                                                              .size
+                                                              .width,
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Flexible(
+                                                                child: Text(name,
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                    style: GoogleFonts.rubik(
+                                                                        textStyle: const TextStyle(
+                                                                            color: Colors
+                                                                                .black,
+                                                                            fontSize:
+                                                                                15,
+                                                                            fontWeight:
+                                                                                FontWeight.bold))),
+                                                              ),
+                                                            ],
+                                                          ),
                                                         ),
-                                                      ),
-                                                      Container(
-                                                        width: MediaQuery.of(
-                                                                context)
-                                                            .size
-                                                            .width,
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Flexible(
-                                                              child: Text(
-                                                                  tanggapan,
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .start,
-                                                                  style: GoogleFonts.poppins(
-                                                                      textStyle: const TextStyle(
-                                                                          color: Colors
-                                                                              .black,
-                                                                          fontSize:
-                                                                              15,
-                                                                          fontWeight:
-                                                                              FontWeight.w400))),
-                                                            ),
-                                                          ],
+                                                        Container(
+                                                          width: MediaQuery.of(
+                                                                  context)
+                                                              .size
+                                                              .width,
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Flexible(
+                                                                child: Text(
+                                                                    tanggapan,
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    style: GoogleFonts.rubik(
+                                                                        textStyle: const TextStyle(
+                                                                            color: Colors
+                                                                                .black,
+                                                                            fontSize:
+                                                                                15,
+                                                                            fontWeight:
+                                                                                FontWeight.w400))),
+                                                              ),
+                                                            ],
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            )
-                                          ],
+                                              )
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    );
-                                  });
-                            }
-                            return Center(
-                              child: CircularProgressIndicator(
-                                color: Colors.purple,
-                              ),
-                            );
-                          })
+                                      );
+                                    });
+                              }
+                              return Center(
+                                child: CircularProgressIndicator(
+                                  color: Colors.purple,
+                                ),
+                              );
+                            }),
+                      )
                     ],
                   ),
                 )

@@ -96,11 +96,13 @@ class _MessageTextFieldState extends State<MessageTextField> {
                                 contentPadding:
                                     EdgeInsets.fromLTRB(15, 1, 9, 5.0),
                                 border: InputBorder.none,
-                                hintStyle: TextStyle(
-                                    fontSize: 13,
-                                    color: Colors.black.withOpacity(0.5),
-                                    fontWeight: FontWeight.w500),
-                                hintText: "Tulis Pesan..."),
+                                hintStyle: GoogleFonts.rubik(
+                                                      textStyle: TextStyle(
+                                                    fontSize: 13,
+                                                    color: Colors.black.withOpacity(0.5),
+                                                    fontWeight: FontWeight.w600,
+                                                  )),
+                                hintText: "Tulis Pesan...",),
                           ),
                         ),
                       ),
@@ -128,7 +130,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
                                               children: [
                                                 Text(
                                                   'Pilih Tindakan',
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.rubik(
                                                       textStyle: TextStyle(
                                                     fontSize: 15,
                                                     color: Colors.black,
@@ -176,7 +178,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
                                                         Text(
                                                           'File',
                                                           style: GoogleFonts
-                                                              .poppins(
+                                                              .rubik(
                                                                   textStyle:
                                                                       TextStyle(
                                                             fontSize: 12,
@@ -224,7 +226,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
                                                         Text(
                                                           'Kamera',
                                                           style: GoogleFonts
-                                                              .poppins(
+                                                              .rubik(
                                                                   textStyle:
                                                                       TextStyle(
                                                             fontSize: 12,
@@ -504,7 +506,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
                                           child: Center(
                                               child: Text(
                                             'Kirim Foto',
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.rubik(
                                                 textStyle: TextStyle(
                                               fontSize: 15,
                                               color: Colors.white,

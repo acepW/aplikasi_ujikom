@@ -56,7 +56,7 @@ class _PesanBaruScreenState extends State<PesanBaruScreen> {
                           });
                           print(_);
                         },
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.rubik(
                             textStyle: const TextStyle(
                                 fontSize: 12, fontWeight: FontWeight.w500)),
                         decoration: InputDecoration(
@@ -66,7 +66,7 @@ class _PesanBaruScreenState extends State<PesanBaruScreen> {
                             size: 15,
                           ),
                           hintText: 'Cari',
-                          hintStyle: GoogleFonts.poppins(
+                          hintStyle: GoogleFonts.rubik(
                               textStyle: const TextStyle(
                                   fontSize: 12,
                                   color: Colors.grey,

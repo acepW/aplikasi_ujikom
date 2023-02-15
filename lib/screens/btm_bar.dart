@@ -19,7 +19,7 @@ class BottomBarScreen extends StatefulWidget {
 }
 
 class _BottomBarScreenState extends State<BottomBarScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   final List<Map<String, dynamic>> _pages = [
     {'page': const HomeScreens(), 'title': 'Home Screen'},
     {'page': PengaduanScreens(), 'title': 'Pengaduan Screen'},
@@ -51,12 +51,12 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon:
-                Icon(_selectedIndex == 0 ? IconlyBold.chat : IconlyLight.chat),
+                Icon(_selectedIndex == 0 ? IconlyBold.chat : IconlyLight.chat,color: Colors.purple,),
             label: "Chat",
           ),
           BottomNavigationBarItem(
             icon: Icon(
-                _selectedIndex == 1 ? IconlyBold.addUser : IconlyLight.addUser),
+                _selectedIndex == 1 ? IconlyBold.addUser : IconlyLight.addUser,color: Colors.purple,),
             label: "Pengaduan",
           ),
         ],
