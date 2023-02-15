@@ -138,14 +138,14 @@ class _HalamanChatState extends State<HalamanChat> {
                   title: "Hapus Percakapan",
                   fct: () async {
                     await FirebaseFirestore.instance
-                        .collection('users')
+                        .collection('akun')
                         .doc(widget.currentUser)
                         .collection('messages')
                         .doc(widget.friendId)
                         .delete();
 
                     final collection = await FirebaseFirestore.instance
-                        .collection('users')
+                        .collection('akun')
                         .doc(widget.currentUser)
                         .collection('messages')
                         .doc(widget.friendId)
@@ -188,7 +188,7 @@ class _HalamanChatState extends State<HalamanChat> {
                     child: Container(
                   child: StreamBuilder(
                       stream: FirebaseFirestore.instance
-                          .collection("users")
+                          .collection("akun")
                           .doc(widget.currentUser)
                           .collection('messages')
                           .doc(widget.friendId)

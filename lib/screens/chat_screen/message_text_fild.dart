@@ -272,7 +272,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
 
                                 _controller.clear();
                                 await FirebaseFirestore.instance
-                                    .collection('users')
+                                    .collection('akun')
                                     .doc(widget.currentId)
                                     .collection('messages')
                                     .doc(widget.friendId)
@@ -286,7 +286,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
                                   "date": DateTime.now(),
                                 }).then((value) {
                                   FirebaseFirestore.instance
-                                      .collection('users')
+                                      .collection('akun')
                                       .doc(widget.currentId)
                                       .collection('messages')
                                       .doc(widget.friendId)
@@ -301,7 +301,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
                                 });
 
                                 await FirebaseFirestore.instance
-                                    .collection('users')
+                                    .collection('akun')
                                     .doc(widget.friendId)
                                     .collection('messages')
                                     .doc(widget.currentId)
@@ -315,7 +315,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
                                   "date": DateTime.now(),
                                 }).then((value) {
                                   FirebaseFirestore.instance
-                                      .collection('users')
+                                      .collection('akun')
                                       .doc(widget.friendId)
                                       .collection('messages')
                                       .doc(widget.currentId)
@@ -412,7 +412,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
                                                   "chat_image", _file!);
                                         }
                                         await FirebaseFirestore.instance
-                                            .collection('users')
+                                            .collection('akun')
                                             .doc(widget.currentId)
                                             .collection('messages')
                                             .doc(widget.friendId)
@@ -426,7 +426,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
                                           "date": DateTime.now(),
                                         }).then((value) {
                                           FirebaseFirestore.instance
-                                              .collection('users')
+                                              .collection('akun')
                                               .doc(widget.currentId)
                                               .collection('messages')
                                               .doc(widget.friendId)
@@ -441,7 +441,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
                                         });
 
                                         await FirebaseFirestore.instance
-                                            .collection('users')
+                                            .collection('akun')
                                             .doc(widget.friendId)
                                             .collection('messages')
                                             .doc(widget.currentId)
@@ -455,7 +455,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
                                           "date": DateTime.now(),
                                         }).then((value) {
                                           FirebaseFirestore.instance
-                                              .collection('users')
+                                              .collection('akun')
                                               .doc(widget.friendId)
                                               .collection('messages')
                                               .doc(widget.currentId)

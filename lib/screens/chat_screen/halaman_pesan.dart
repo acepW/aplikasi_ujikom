@@ -62,7 +62,7 @@ class _HalamanPesanState extends State<HalamanPesan> {
                 padding: const EdgeInsets.only(top: 15),
                 child: StreamBuilder(
                     stream: FirebaseFirestore.instance
-                        .collection('users')
+                        .collection('akun')
                         .doc(widget.userModel.uid)
                         .collection('messages')
                         .orderBy("last_date", descending: true)
@@ -220,7 +220,7 @@ class _HalamanPesanState extends State<HalamanPesan> {
                                         onTap: () async {
                                           try {
                                             await FirebaseFirestore.instance
-                                                .collection('users')
+                                                .collection('akun')
                                                 .doc(widget.userModel.uid)
                                                 .collection('messages')
                                                 .doc(friend['uid'])

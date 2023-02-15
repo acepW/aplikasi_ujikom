@@ -153,7 +153,7 @@ class FireStoreMethods {
   static updateSend(String myId, String friendId) async {
     try {
       await FirebaseFirestore.instance
-          .collection('users')
+          .collection('akun')
           .doc(myId)
           .collection('messages')
           .doc(friendId)
@@ -166,14 +166,14 @@ class FireStoreMethods {
   static deleteMessage(String myId, String friendId) async {
     try {
       await FirebaseFirestore.instance
-          .collection('users')
+          .collection('akun')
           .doc(myId)
           .collection('messages')
           .doc(friendId)
           .delete();
 
       await FirebaseFirestore.instance
-          .collection('users')
+          .collection('akun')
           .doc(friendId)
           .collection('messages')
           .doc(myId)

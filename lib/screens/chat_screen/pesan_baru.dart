@@ -83,7 +83,7 @@ class _PesanBaruScreenState extends State<PesanBaruScreen> {
               if (isShowUsers)
                 FutureBuilder(
                   future: FirebaseFirestore.instance
-                      .collection('users')
+                      .collection('akun')
                       .where(
                         'username',
                         isGreaterThanOrEqualTo: searchController.text,

@@ -1,3 +1,4 @@
+import 'package:aplikasi_ujikom/global_methods.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
@@ -41,7 +42,8 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
         child: Container(
           width: MediaQuery.of(context).size.width,
           child: Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 50,bottom: 30),
+            padding:
+                const EdgeInsets.only(left: 20, right: 20, top: 50, bottom: 30),
             child: Column(
               children: [
                 Container(
@@ -55,6 +57,24 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                                   color: Colors.black,
                                   fontSize: 25,
                                   fontWeight: FontWeight.w500))),
+                      Spacer(),
+                      IconButton(
+                          onPressed: () {
+                            GlobalMethods.warningDialog(
+                              context: context,
+                              subtitle: "Yakin menghapus Aduan?",
+                              title: "Hapus Aduan",
+                              fct: () async {
+                                await FirebaseFirestore.instance
+                                    .collection('aduan')
+                                    .doc(widget.postId)
+                                    .delete();
+
+                                return Navigator.pop(context);
+                              },
+                            );
+                          },
+                          icon: Icon(IconlyLight.delete))
                     ],
                   ),
                 ),
@@ -226,7 +246,8 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                                                   )
                                                 : CircleAvatar(
                                                     radius: 25,
-                                                    backgroundColor: Colors.grey,
+                                                    backgroundColor:
+                                                        Colors.grey,
                                                     backgroundImage:
                                                         NetworkImage(photoUrl)),
                                             Expanded(
@@ -243,13 +264,14 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                                                       const EdgeInsets.all(8.0),
                                                   child: Column(
                                                     crossAxisAlignment:
-                                                        CrossAxisAlignment.start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Container(
-                                                        width:
-                                                            MediaQuery.of(context)
-                                                                .size
-                                                                .width,
+                                                        width: MediaQuery.of(
+                                                                context)
+                                                            .size
+                                                            .width,
                                                         child: Row(
                                                           mainAxisAlignment:
                                                               MainAxisAlignment
@@ -273,10 +295,10 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                                                         ),
                                                       ),
                                                       Container(
-                                                        width:
-                                                            MediaQuery.of(context)
-                                                                .size
-                                                                .width,
+                                                        width: MediaQuery.of(
+                                                                context)
+                                                            .size
+                                                            .width,
                                                         child: Row(
                                                           mainAxisAlignment:
                                                               MainAxisAlignment
