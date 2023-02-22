@@ -20,42 +20,32 @@ class _HomeScreensState extends State<HomeScreens> {
   @override
   Widget build(BuildContext context) {
     Provider.of<UserProvider>(context).refreshUser();
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        drawer: Drawer(
-          child: SingleChildScrollView(
-              child: Column(
-            children: [DrawerHome()],
-          )),
-        ),
-        appBar: AppBar(
-          backgroundColor: Colors.purple,
-          centerTitle: true,
-          title: Text("Aplikasi Ujikom",
-              style: GoogleFonts.rubik(
-                  textStyle: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500))),
-          bottom: TabBar(indicatorColor: Colors.white, tabs: [
-            Text(
-              "Chat",
-              style: GoogleFonts.rubik(
-                  textStyle: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500)),
-            ),
-            Text("Pencarian",
-                style: GoogleFonts.rubik(
-                    textStyle: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500)))
-          ]),
-        ),
-        body: TabBarView(children: [HalamanChatPage(), HalamanPesanBaruPage()]),
+    return Scaffold(
+      drawer: Drawer(
+        child: SingleChildScrollView(
+            child: Column(
+          children: [DrawerHome()],
+        )),
+      ),
+      appBar: AppBar(
+        backgroundColor: Colors.purple,
+        centerTitle: true,
+        title: Text("Aplikasi Ujikom",
+            style: GoogleFonts.rubik(
+                textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500))),
+      ),
+      body: HalamanChatPage(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return HalamanPesanBaruPage();
+          }));
+        },
+        backgroundColor: Colors.purple,
+        child: const Icon(Icons.search),
       ),
     );
   }
