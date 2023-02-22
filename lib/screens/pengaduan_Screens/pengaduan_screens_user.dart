@@ -51,13 +51,7 @@ class _PengaduanScreensUserState extends State<PengaduanScreensUser> {
                   height: 150,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    gradient: LinearGradient(
-                        begin:Alignment.centerLeft ,
-                        end:Alignment.centerRight ,
-                        colors: [
-                          Colors.blue,
-                          Colors.transparent
-                        ])
+                   color: Colors.blue
                   ),
                   child: Padding(
                     padding: EdgeInsets.only(left: 20, top: 50),
@@ -100,14 +94,8 @@ class _PengaduanScreensUserState extends State<PengaduanScreensUser> {
                   height: 150,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
-                      
-                      gradient: LinearGradient(
-                        begin:Alignment.centerLeft ,
-                        end:Alignment.centerRight ,
-                        colors: [
-                          Colors.black,
-                          Colors.transparent
-                        ])),
+                      color: Colors.black,
+                      ),
                   child: Padding(
                     padding: EdgeInsets.only(left: 20, top: 50),
                     child: Container(
@@ -149,13 +137,8 @@ class _PengaduanScreensUserState extends State<PengaduanScreensUser> {
                   height: 150,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    gradient: LinearGradient(
-                        begin:Alignment.centerLeft ,
-                        end:Alignment.centerRight ,
-                        colors: [
-                          Colors.yellow,
-                          Colors.transparent
-                        ])
+                    color: Colors.purple,
+                   
                   ),
                   child: Padding(
                     padding: EdgeInsets.only(left: 20, top: 50),
@@ -198,13 +181,8 @@ class _PengaduanScreensUserState extends State<PengaduanScreensUser> {
                   height: 150,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    gradient: LinearGradient(
-                        begin:Alignment.centerLeft ,
-                        end:Alignment.centerRight ,
-                        colors: [
-                          Colors.green,
-                          Colors.transparent
-                        ])
+                    color: Colors.green,
+                   
                   ),
                   child: Padding(
                     padding: EdgeInsets.only(left: 20, top: 50),
@@ -247,13 +225,8 @@ class _PengaduanScreensUserState extends State<PengaduanScreensUser> {
                   height: 150,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    gradient: LinearGradient(
-                        begin:Alignment.centerLeft ,
-                        end:Alignment.centerRight ,
-                        colors: [
-                          Colors.red,
-                          Colors.transparent
-                        ])
+                    color: Colors.red,
+                   
                   ),
                   child: Padding(
                     padding: EdgeInsets.only(left: 20, top: 50),

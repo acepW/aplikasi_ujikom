@@ -145,10 +145,10 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                     }
                   },
                   style: GoogleFonts.rubik(
-                          textStyle: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500)),
+                      textStyle: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500)),
                   decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderSide:
@@ -161,7 +161,6 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       hintText: "Email",
-                      
                       hintStyle: GoogleFonts.rubik(
                           textStyle: const TextStyle(
                               color: Colors.black,
@@ -185,10 +184,10 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                     }
                   },
                   style: GoogleFonts.rubik(
-                          textStyle: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500)),
+                      textStyle: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500)),
                   onEditingComplete: () =>
                       FocusScope.of(context).requestFocus(_userNameFocusNode),
                   decoration: InputDecoration(
@@ -216,7 +215,6 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       hintText: "Password",
-                     
                       hintStyle: GoogleFonts.rubik(
                           textStyle: const TextStyle(
                               color: Colors.black,
@@ -239,10 +237,10 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                     }
                   },
                   style: GoogleFonts.rubik(
-                          textStyle: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500)),
+                      textStyle: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500)),
                   decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderSide:
@@ -255,7 +253,6 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       hintText: "Nama Lengkap",
-                      
                       hintStyle: GoogleFonts.rubik(
                           textStyle: const TextStyle(
                               color: Colors.black,
@@ -274,10 +271,10 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                     }
                   },
                   style: GoogleFonts.rubik(
-                          textStyle: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500)),
+                      textStyle: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500)),
                   focusNode: _userNameFocusNode,
                   textInputAction: TextInputAction.next,
                   onEditingComplete: () =>
@@ -295,7 +292,6 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       hintText: "Username",
-                     
                       hintStyle: GoogleFonts.rubik(
                           textStyle: const TextStyle(
                               color: Colors.black,
@@ -316,14 +312,18 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                         color: Colors.purple,
                         borderRadius: BorderRadius.circular(15)),
                     child: Center(
-                      child: Text(
-                        "Registrasi",
-                        style: GoogleFonts.rubik(
-                            textStyle: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500)),
-                      ),
+                      child: _isLoading
+                          ? CircularProgressIndicator(
+                              color: Colors.white,
+                            )
+                          : Text(
+                              "Registrasi",
+                              style: GoogleFonts.rubik(
+                                  textStyle: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500)),
+                            ),
                     ),
                   ),
                 ),

@@ -72,7 +72,6 @@ class _LoginScreensState extends State<LoginScreens> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -114,10 +113,10 @@ class _LoginScreensState extends State<LoginScreens> {
                             }
                           },
                           style: GoogleFonts.rubik(
-                                  textStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500)),
+                              textStyle: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500)),
                           decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -156,10 +155,10 @@ class _LoginScreensState extends State<LoginScreens> {
                             }
                           },
                           style: GoogleFonts.rubik(
-                                  textStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500)),
+                              textStyle: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500)),
                           decoration: InputDecoration(
                               suffixIcon: GestureDetector(
                                 onTap: () {
@@ -205,14 +204,18 @@ class _LoginScreensState extends State<LoginScreens> {
                                 color: Colors.purple,
                                 borderRadius: BorderRadius.circular(15)),
                             child: Center(
-                              child: Text(
-                                "Login",
-                                style: GoogleFonts.rubik(
-                                    textStyle: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500)),
-                              ),
+                              child: _isLoading
+                                  ? CircularProgressIndicator(
+                                      color: Colors.white,
+                                    )
+                                  : Text(
+                                      "Login",
+                                      style: GoogleFonts.rubik(
+                                          textStyle: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w500)),
+                                    ),
                             ),
                           ),
                         ),

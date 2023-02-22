@@ -26,9 +26,19 @@ class _PesanBaruScreenState extends State<PesanBaruScreen> {
 
   @override
   Widget build(BuildContext context) {
-     User? user = FirebaseAuth.instance.currentUser;
+    User? user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.purple,
+        centerTitle: true,
+        title: Text("Aplikasi Ujikom",
+            style: GoogleFonts.rubik(
+                textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500))),
+      ),
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -86,8 +96,6 @@ class _PesanBaruScreenState extends State<PesanBaruScreen> {
                 FutureBuilder(
                   future: FirebaseFirestore.instance
                       .collection('akun')
-                      
-                     
                       
                       .where(
                         'username',
@@ -221,8 +229,133 @@ class _PesanBaruScreenState extends State<PesanBaruScreen> {
                   },
                 )
               else
-                Container(
-                  decoration: BoxDecoration(color: Colors.white),
+                FutureBuilder(
+                  future: FirebaseFirestore.instance.collection('akun').get(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    return ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: (snapshot.data! as dynamic).docs.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HalamanChat(
+                                      myImage: widget.userModel.photoUrl,
+                                      myName: (snapshot.data! as dynamic)
+                                          .docs[index]['name'],
+                                      // fcmtoken: (snapshot.data! as dynamic).docs[index]
+                                      //     ['fcmtoken'],
+                                      currentUser: widget.userModel.uid,
+                                      friendId: (snapshot.data! as dynamic)
+                                          .docs[index]['uid'],
+                                      friendName: (snapshot.data! as dynamic)
+                                          .docs[index]['name'],
+                                      friendImage: (snapshot.data! as dynamic)
+                                              .docs[index]['photoUrl']
+                                              .toString()
+                                              .isEmpty
+                                          ? 'https://i.stack.imgur.com/l60Hf.png'
+                                          : (snapshot.data! as dynamic)
+                                              .docs[index]['photoUrl'],
+                                      friendUsername:
+                                          (snapshot.data! as dynamic)
+                                              .docs[index]['username']))),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 24, right: 24),
+                            child: Container(
+                              height: 72,
+                              child: Row(
+                                children: [
+                                  (snapshot.data! as dynamic)
+                                          .docs[index]['photoUrl']
+                                          .toString()
+                                          .isEmpty
+                                      ? CircleAvatar(
+                                          radius: 25,
+                                          backgroundImage: NetworkImage(
+                                              'https://i.stack.imgur.com/l60Hf.png'),
+                                        )
+                                      : CircleAvatar(
+                                          radius: 25,
+                                          backgroundImage: NetworkImage(
+                                            (snapshot.data! as dynamic)
+                                                .docs[index]['photoUrl'],
+                                          )),
+                                  const SizedBox(
+                                    width: 8,
+                                  ),
+                                  Container(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(top: 15),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            height: 21,
+                                            child: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  (snapshot.data! as dynamic)
+                                                      .docs[index]['name'],
+                                                  style: GoogleFonts.poppins(
+                                                      textStyle:
+                                                          const TextStyle(
+                                                              fontSize: 14,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600)),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            height: 18,
+                                            child: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  (snapshot.data! as dynamic)
+                                                      .docs[index]['username'],
+                                                  style: GoogleFonts.poppins(
+                                                      textStyle: TextStyle(
+                                                          color: Colors.black
+                                                              .withOpacity(0.5),
+                                                          fontSize: 10,
+                                                          fontWeight:
+                                                              FontWeight.w500)),
+                                                ),
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
                 )
             ],
           ),

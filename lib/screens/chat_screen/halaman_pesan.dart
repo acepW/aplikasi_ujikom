@@ -71,14 +71,44 @@ class _HalamanPesanState extends State<HalamanPesan> {
                       if (snapshot.hasData) {
                         if (snapshot.data.docs.length < 1) {
                           return Padding(
-                            padding: const EdgeInsets.only(top: 200),
+                            padding: const EdgeInsets.only(
+                                top: 200, left: 20, right: 20),
                             child: Center(
-                              child: Text("Mulai Lah Percakapan Mu",
-                                  style: GoogleFonts.rubik(
-                                      textStyle: const TextStyle(
+                              child: Column(
+                                children: [
+                                  Text("Belum Ada Percakapan",
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.rubik(
+                                          textStyle: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500))),
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                  Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text("Cari Teman Klick",
+                                            textAlign: TextAlign.center,
+                                            style: GoogleFonts.rubik(
+                                                textStyle: const TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.w500))),
+                                        Icon(
+                                          Icons.search,
+                                          size: 30,
                                           color: Colors.black,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500))),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         }
@@ -345,8 +375,8 @@ class _HalamanPesanState extends State<HalamanPesan> {
                                                         Text(
                                                           DateFormat.jm()
                                                               .format(last),
-                                                          style: GoogleFonts
-                                                              .rubik(
+                                                          style:
+                                                              GoogleFonts.rubik(
                                                             textStyle:
                                                                 const TextStyle(
                                                                     fontSize:
