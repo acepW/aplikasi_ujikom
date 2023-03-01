@@ -35,7 +35,15 @@ class _CardAduanState extends State<CardAduan> {
           height: 200,
           decoration: BoxDecoration(
               border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(15)),
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                            color: Colors.black.withOpacity(0.5),
+                            blurRadius: 10,
+                            offset: Offset(2, 6))
+              ]
+              ),
           child: Column(
             children: [
               Container(
@@ -45,7 +53,7 @@ class _CardAduanState extends State<CardAduan> {
                     color: Colors.purple.withOpacity(0.7),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(15),
-                        topRight: Radius.circular(15))),
+                        topRight: Radius.circular(15)),),
                 child: Padding(
                   padding: const EdgeInsets.only(top: 8, left: 20,right: 20),
                   child: Row(

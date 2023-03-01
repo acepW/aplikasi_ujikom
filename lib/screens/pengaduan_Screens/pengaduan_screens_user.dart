@@ -19,10 +19,8 @@ class _PengaduanScreensUserState extends State<PengaduanScreensUser> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-        child: SingleChildScrollView(
-            child: Column(
-          children: [DrawerHome()],
-        )),
+         width: 200,
+        child: DrawerHome(),
       ),
       appBar: AppBar(
         backgroundColor: Colors.purple,
@@ -50,31 +48,59 @@ class _PengaduanScreensUserState extends State<PengaduanScreensUser> {
                   width: MediaQuery.of(context).size.width,
                   height: 150,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                   color: Colors.blue
-                  ),
+                      border: Border.all(width: 2, color: Colors.black),
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            blurRadius: 10,
+                            offset: Offset(2, 6))
+                      ]),
                   child: Padding(
-                    padding: EdgeInsets.only(left: 20, top: 50),
-                    child: Container(
-                      width: 150,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Buatlah",
-                            style: GoogleFonts.rubik(
-                                textStyle: TextStyle(
-                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
+                    padding: EdgeInsets.only(left: 20, right: 20),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 40),
+                          child: Container(
+                            width: 150,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Buatlah",
+                                  style: GoogleFonts.rubik(
+                                      textStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                                Text(
+                                  "Sebuah Aduan",
+                                  style: GoogleFonts.rubik(
+                                      textStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                              ],
+                            ),
                           ),
-                          Text(
-                            "Sebuah Aduan",
-                            style: GoogleFonts.rubik(
-                                textStyle: TextStyle(
-                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
-                          ),
-                        ],
-                      ),
+                        ),
+                        Container(
+                          width: 130,
+                          height: 100,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image:
+                                      AssetImage('assets/images/pengaduan.png'),
+                                  fit: BoxFit.fill)),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -93,31 +119,59 @@ class _PengaduanScreensUserState extends State<PengaduanScreensUser> {
                   width: MediaQuery.of(context).size.width,
                   height: 150,
                   decoration: BoxDecoration(
+                      border: Border.all(width: 2, color: Colors.black),
                       borderRadius: BorderRadius.circular(15),
-                      color: Colors.black,
-                      ),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            blurRadius: 10,
+                            offset: Offset(2, 6))
+                      ]),
                   child: Padding(
-                    padding: EdgeInsets.only(left: 20, top: 50),
-                    child: Container(
-                      width: 150,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Semua",
-                            style: GoogleFonts.rubik(
-                                textStyle: TextStyle(
-                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
+                    padding: EdgeInsets.only(left: 20, right: 20),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 40),
+                          child: Container(
+                            width: 150,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Semua",
+                                  style: GoogleFonts.rubik(
+                                      textStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                                Text(
+                                  "Aduan Anda",
+                                  style: GoogleFonts.rubik(
+                                      textStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                              ],
+                            ),
                           ),
-                          Text(
-                            "Aduan Anda",
-                            style: GoogleFonts.rubik(
-                                textStyle: TextStyle(
-                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
-                          ),
-                        ],
-                      ),
+                        ),
+                        Container(
+                          width: 130,
+                          height: 100,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image:
+                                      AssetImage('assets/images/all.png'),
+                                  fit: BoxFit.fill)),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -136,32 +190,59 @@ class _PengaduanScreensUserState extends State<PengaduanScreensUser> {
                   width: MediaQuery.of(context).size.width,
                   height: 150,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.purple,
-                   
-                  ),
+                      border: Border.all(width: 2, color: Colors.black),
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            blurRadius: 10,
+                            offset: Offset(2, 6))
+                      ]),
                   child: Padding(
-                    padding: EdgeInsets.only(left: 20, top: 50),
-                    child: Container(
-                      width: 150,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Aduan",
-                            style: GoogleFonts.rubik(
-                                textStyle: TextStyle(
-                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
+                    padding: EdgeInsets.only(left: 20, right: 20),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 40),
+                          child: Container(
+                            width: 150,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Aduan",
+                                  style: GoogleFonts.rubik(
+                                      textStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                                Text(
+                                  "Di Proses",
+                                  style: GoogleFonts.rubik(
+                                      textStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                              ],
+                            ),
                           ),
-                          Text(
-                            "Di Proses",
-                            style: GoogleFonts.rubik(
-                                textStyle: TextStyle(
-                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
-                          ),
-                        ],
-                      ),
+                        ),
+                        Container(
+                          width: 130,
+                          height: 100,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image:
+                                      AssetImage('assets/images/work-process.png'),
+                                  fit: BoxFit.fill)),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -174,38 +255,66 @@ class _PengaduanScreensUserState extends State<PengaduanScreensUser> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => ListPengaduanUserDiVerifikasi()));
+                          builder: (context) =>
+                              ListPengaduanUserDiVerifikasi()));
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   height: 150,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.green,
-                   
-                  ),
+                      border: Border.all(width: 2, color: Colors.black),
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            blurRadius: 10,
+                            offset: Offset(2, 6))
+                      ]),
                   child: Padding(
-                    padding: EdgeInsets.only(left: 20, top: 50),
-                    child: Container(
-                      width: 150,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Aduan",
-                            style: GoogleFonts.rubik(
-                                textStyle: TextStyle(
-                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
+                    padding: EdgeInsets.only(left: 20, right: 20),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 40),
+                          child: Container(
+                            width: 150,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Aduan",
+                                  style: GoogleFonts.rubik(
+                                      textStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                                Text(
+                                  "Di Verifikasi",
+                                  style: GoogleFonts.rubik(
+                                      textStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                              ],
+                            ),
                           ),
-                          Text(
-                            "Di Verifikasi",
-                            style: GoogleFonts.rubik(
-                                textStyle: TextStyle(
-                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
-                          ),
-                        ],
-                      ),
+                        ),
+                        Container(
+                          width: 130,
+                          height: 100,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image:
+                                      AssetImage('assets/images/accept.png'),
+                                  fit: BoxFit.fill)),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -224,32 +333,59 @@ class _PengaduanScreensUserState extends State<PengaduanScreensUser> {
                   width: MediaQuery.of(context).size.width,
                   height: 150,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.red,
-                   
-                  ),
+                      border: Border.all(width: 2, color: Colors.black),
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            blurRadius: 10,
+                            offset: Offset(2, 6))
+                      ]),
                   child: Padding(
-                    padding: EdgeInsets.only(left: 20, top: 50),
-                    child: Container(
-                      width: 150,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Aduan",
-                            style: GoogleFonts.rubik(
-                                textStyle: TextStyle(
-                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
+                    padding: EdgeInsets.only(left: 20, right: 20),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 40),
+                          child: Container(
+                            width: 150,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Aduan",
+                                  style: GoogleFonts.rubik(
+                                      textStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                                Text(
+                                  "Di Tolak",
+                                  style: GoogleFonts.rubik(
+                                      textStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                              ],
+                            ),
                           ),
-                          Text(
-                            "Di Tolak",
-                            style: GoogleFonts.rubik(
-                                textStyle: TextStyle(
-                                    color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
-                          ),
-                        ],
-                      ),
+                        ),
+                        Container(
+                          width: 130,
+                          height: 100,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image:
+                                      AssetImage('assets/images/rejected.png'),
+                                  fit: BoxFit.fill)),
+                        ),
+                      ],
                     ),
                   ),
                 ),

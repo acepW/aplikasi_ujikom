@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:aplikasi_ujikom/global_methods.dart';
+import 'package:aplikasi_ujikom/screens/btm_bar.dart';
 import 'package:aplikasi_ujikom/screens/home_screens.dart';
 import 'package:aplikasi_ujikom/storage_method.dart';
 import 'package:aplikasi_ujikom/utils/utils.dart';
@@ -275,8 +276,10 @@ class _EditProfilScreenState extends State<EditProfilScreen> {
                               String _uid = user!.uid;
                               String? photoUrl;
 
-                              if (_photoUrl == null) {
+                              if (_image == null) {
                                 photoUrl = _photoUrl;
+                                
+                                
                               } else {
                                 photoUrl = await StorageMethods()
                                     .uploadImageToStorage(
@@ -295,7 +298,7 @@ class _EditProfilScreenState extends State<EditProfilScreen> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => HomeScreens()));
+                                        builder: (context) => BottomBarScreen()));
                                 setState(() {
                                   _userName = _userNameTextController.text;
 

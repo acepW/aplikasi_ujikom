@@ -2,6 +2,7 @@ import 'package:aplikasi_ujikom/const/firebase_const.dart';
 import 'package:aplikasi_ujikom/global_methods.dart';
 import 'package:aplikasi_ujikom/model/user_model.dart';
 import 'package:aplikasi_ujikom/provider/user_provider.dart';
+
 import 'package:aplikasi_ujikom/screens/home_screens.dart';
 import 'package:aplikasi_ujikom/screens/pengaduan_Screens/pengaduan_screens.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -23,6 +24,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
   final List<Map<String, dynamic>> _pages = [
     {'page': const HomeScreens(), 'title': 'Home Screen'},
     {'page': PengaduanScreens(), 'title': 'Pengaduan Screen'},
+    
   ];
   void _selectedPage(int index) {
     setState(() {
@@ -52,14 +54,15 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon:
-                Icon(_selectedIndex == 0 ? IconlyBold.chat : IconlyLight.chat,color: Colors.purple,),
+                Icon(_selectedIndex == 0 ? IconlyBold.message : IconlyLight.message,color: Colors.purple,),
             label: "Chat",
           ),
           BottomNavigationBarItem(
             icon: Icon(
-                _selectedIndex == 1 ? IconlyBold.addUser : IconlyLight.addUser,color: Colors.purple,),
+                _selectedIndex == 1 ? IconlyBold.addUser : IconlyLight.category,color: Colors.purple,),
             label: "Pengaduan",
           ),
+          
         ],
       ),
     );

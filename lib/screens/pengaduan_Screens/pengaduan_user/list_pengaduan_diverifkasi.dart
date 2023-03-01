@@ -52,12 +52,11 @@ class _ListPengaduanUserDiVerifikasiState
                     return Padding(
                       padding: const EdgeInsets.only(top: 200),
                       child: Center(
-                        child: Text("Buatlah Aduanmu",
-                            style: GoogleFonts.poppins(
-                                textStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w500))),
+                        child:Container(
+                                  width: 200,
+                                  height: 200,
+                                  decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/empty.png'))),
+                                 ),
                       ),
                     );
                   }
