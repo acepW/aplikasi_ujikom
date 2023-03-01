@@ -22,10 +22,8 @@ class _HomeScreensState extends State<HomeScreens> {
     Provider.of<UserProvider>(context).refreshUser();
     return Scaffold(
       drawer: Drawer(
-        child: SingleChildScrollView(
-            child: Column(
-          children: [DrawerHome()],
-        )),
+        width: 200,
+        child: DrawerHome(),
       ),
       appBar: AppBar(
         backgroundColor: Colors.purple,

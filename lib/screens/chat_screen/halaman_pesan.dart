@@ -76,13 +76,11 @@ class _HalamanPesanState extends State<HalamanPesan> {
                             child: Center(
                               child: Column(
                                 children: [
-                                  Text("Belum Ada Percakapan",
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.rubik(
-                                          textStyle: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500))),
+                                 Container(
+                                  width: 200,
+                                  height: 200,
+                                  decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/empty.png'))),
+                                 ),
                                   SizedBox(
                                     height: 30,
                                   ),
