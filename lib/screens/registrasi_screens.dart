@@ -225,6 +225,7 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                   height: 10,
                 ),
                 TextFormField(
+                  maxLength: 30,
                   textInputAction: TextInputAction.next,
                   onEditingComplete: () =>
                       FocusScope.of(context).requestFocus(_passFocusNode),
@@ -263,6 +264,7 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                   height: 10,
                 ),
                 TextFormField(
+                  maxLength: 20,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Please enter a valid  user name";
