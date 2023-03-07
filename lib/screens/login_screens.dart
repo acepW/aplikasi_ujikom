@@ -1,10 +1,14 @@
 import 'package:aplikasi_ujikom/const/firebase_const.dart';
 import 'package:aplikasi_ujikom/global_methods.dart';
+import 'package:aplikasi_ujikom/model/user_model.dart';
 import 'package:aplikasi_ujikom/provider/user_provider.dart';
 import 'package:aplikasi_ujikom/screens/btm_bar.dart';
+import 'package:aplikasi_ujikom/screens/forget_password.dart';
 import 'package:aplikasi_ujikom/screens/home_screens.dart';
 import 'package:aplikasi_ujikom/screens/registrasi_screens.dart';
+import 'package:aplikasi_ujikom/screens/validasi.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -34,6 +38,7 @@ class _LoginScreensState extends State<LoginScreens> {
 
   Future<void> _submitFormOnLogin() async {
     final isValid = _formKey.currentState!.validate();
+     User? user = FirebaseAuth.instance.currentUser;
     FocusScope.of(context).unfocus();
 
     if (isValid) {
@@ -41,15 +46,22 @@ class _LoginScreensState extends State<LoginScreens> {
       setState(() {
         _isLoading = true;
       });
+      
 
       try {
         await authInstance.signInWithEmailAndPassword(
             email: _emailTextController.text.toLowerCase().trim(),
             password: _passTextController.text.trim());
 
+            
+
+
+     
+   
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => BottomBarScreen(),
-        ));
+          builder: (context) => ValidasiScreens(),
+            ));
+        
         print('Successfully logged in');
       } on FirebaseException catch (error) {
         GlobalMethods.errorDialog(
@@ -190,8 +202,33 @@ class _LoginScreensState extends State<LoginScreens> {
                                       fontSize: 15,
                                       fontWeight: FontWeight.w500))),
                         ),
+                         const SizedBox(
+                          height: 5,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ForgetPasswordScreen()));
+                                        },
+                                        child: Text("Lupa Password?",
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                                    color: Colors.purple,
+                                                    fontSize: 10,
+                                                    fontWeight: FontWeight.w500)))),
+                            ],
+                          ),
+                        ),
                         const SizedBox(
-                          height: 25,
+                          height: 5,
                         ),
                         InkWell(
                           onTap: () {
