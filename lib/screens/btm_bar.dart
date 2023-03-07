@@ -59,7 +59,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-                _selectedIndex == 1 ? IconlyBold.addUser : IconlyLight.category,color: Colors.purple,),
+                _selectedIndex == 1 ? IconlyBold.category : IconlyLight.category,color: Colors.purple,),
             label: "Pengaduan",
           ),
           
