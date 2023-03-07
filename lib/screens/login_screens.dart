@@ -3,6 +3,7 @@ import 'package:aplikasi_ujikom/global_methods.dart';
 import 'package:aplikasi_ujikom/model/user_model.dart';
 import 'package:aplikasi_ujikom/provider/user_provider.dart';
 import 'package:aplikasi_ujikom/screens/btm_bar.dart';
+import 'package:aplikasi_ujikom/screens/forget_password.dart';
 import 'package:aplikasi_ujikom/screens/home_screens.dart';
 import 'package:aplikasi_ujikom/screens/registrasi_screens.dart';
 import 'package:aplikasi_ujikom/screens/validasi.dart';
@@ -201,8 +202,33 @@ class _LoginScreensState extends State<LoginScreens> {
                                       fontSize: 15,
                                       fontWeight: FontWeight.w500))),
                         ),
+                         const SizedBox(
+                          height: 5,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ForgetPasswordScreen()));
+                                        },
+                                        child: Text("Lupa Password?",
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                                    color: Colors.purple,
+                                                    fontSize: 10,
+                                                    fontWeight: FontWeight.w500)))),
+                            ],
+                          ),
+                        ),
                         const SizedBox(
-                          height: 25,
+                          height: 5,
                         ),
                         InkWell(
                           onTap: () {
