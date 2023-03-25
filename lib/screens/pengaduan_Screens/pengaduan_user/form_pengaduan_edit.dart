@@ -16,82 +16,95 @@ import 'package:fluttertoast/fluttertoast.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:quickalert/quickalert.dart';
 import 'package:uuid/uuid.dart';
 
-class BuatPengaduanScreens extends StatefulWidget {
-  const BuatPengaduanScreens({super.key});
+class EditPengaduanScreens extends StatefulWidget {
+  final String judul;
+  final String deskripsi;
+  final String image;
+  final String id;
+  const EditPengaduanScreens({super.key, required this.judul, required this.deskripsi, required this.image, required this.id});
 
   @override
-  State<BuatPengaduanScreens> createState() => _BuatPengaduanScreensState();
+  State<EditPengaduanScreens> createState() => _EditPengaduanScreensState();
 }
 
-class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
+class _EditPengaduanScreensState extends State<EditPengaduanScreens> {
   Uint8List? _image;
 
   final _formKey = GlobalKey<FormState>();
-  final _judulController = TextEditingController();
-  final _deskripsiController = TextEditingController();
+   final TextEditingController judulTextController =
+      TextEditingController(text: "");
+      final TextEditingController deskripsiTextController =
+      TextEditingController(text: "");
+
 
   Uint8List? _pickedImage;
   String? imageUrl;
   Uint8List webImage = Uint8List(8);
 
   bool _obscureText = true;
+@override
+  void initState() {
+    // TODO: implement initState
+    judulTextController.text = widget.judul;
+    deskripsiTextController.text = widget.deskripsi;
+    super.initState();
+  }
+
   @override
   void dispose() {
-    _judulController.dispose();
+    judulTextController.dispose();
 
-    _deskripsiController.dispose();
+    deskripsiTextController.dispose();
 
     super.dispose();
   }
 
   bool _isLoading = false;
 
-  void _uploadForm() async {
+
+
+void _uploadForm() async {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
 
     if (isValid) {
       _formKey.currentState!.save();
 
-      final _uuid = const Uuid().v4();
-      User? user = FirebaseAuth.instance.currentUser;
+     
 
-      DocumentSnapshot userData = await FirebaseFirestore.instance
-          .collection('akun')
-          .doc(user!.uid)
-          .get();
-      UserModel userModel = UserModel.fromSnap(userData);
+    
       try {
         setState(() {
           _isLoading = true;
         });
         if (_pickedImage == null) {
-          imageUrl = '';
+          imageUrl = widget.image;
         } else {
           imageUrl = await StorageMethods()
               .uploadImageToStorage("aduanImages", _pickedImage!, true);
         }
 
-        await FirebaseFirestore.instance.collection('aduan').doc(_uuid).set({
-          'postId': _uuid,
-          'photoUrl': userModel.photoUrl,
+        await FirebaseFirestore.instance.collection('aduan').doc(widget.id).update({
+         
           'imageUrl': imageUrl,
-          'name': userModel.name,
-          'pengaduId': userModel.uid,
-          'judul': _judulController.text,
-          'deskripsi': _deskripsiController.text,
-          'status': "di periksa",
-          'createdAt': DateTime.now(),
+         
+          'judul': judulTextController.text,
+          'deskripsi': deskripsiTextController.text,
+          
         });
-        _clearForm();
-        QuickAlert.show(
-          context: context,
-          type: QuickAlertType.success,
-          text: 'Upload Pengaduan Sukses!',
+       
+        Fluttertoast.showToast(
+          msg: "Edit succefully",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          // backgroundColor: ,
+          // textColor: ,
+          // fontSize: 16.0
         );
+        Navigator.pop(context);
       } on FirebaseException catch (error) {
         GlobalMethods.errorDialog(
             subtitle: '${error.message}', context: context);
@@ -111,11 +124,6 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
     }
   }
 
-  void _clearForm() {
-    _judulController.clear();
-    _deskripsiController.clear();
-    _pickedImage = null;
-  }
 
   selectImage() async {
     Uint8List im = await pickImage(ImageSource.gallery);
@@ -150,9 +158,10 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
             key: _formKey,
             child: Column(
               children: [
+               
                 TextFormField(
                   textInputAction: TextInputAction.next,
-                  controller: _judulController,
+                  controller: judulTextController,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Please enter a valid Judul";
@@ -177,6 +186,7 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
                             const BorderSide(width: 1, color: Colors.purple),
                         borderRadius: BorderRadius.circular(5),
                       ),
+                      
                       hintText: "Judul Pengaduan",
                       hintStyle: GoogleFonts.rubik(
                           textStyle: const TextStyle(
@@ -197,7 +207,7 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
                   },
                   maxLines: 50,
                   minLines: 1,
-                  controller: _deskripsiController,
+                  controller: deskripsiTextController,
                   style: GoogleFonts.rubik(
                       textStyle: const TextStyle(
                           color: Colors.black,
@@ -241,7 +251,18 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
                       color: Theme.of(context).scaffoldBackgroundColor,
                       borderRadius: BorderRadius.circular(12.0),
                     ),
-                    child: _pickedImage == null
+                    child:widget.image != ""
+                            ? Container(
+                            height: 200,
+                            width: 270,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: AssetImage(widget.image),
+                                )),
+                          )
+                            : _pickedImage == null
                         ? dottedBorder(color: Colors.black)
                         : Container(
                             height: 200,
@@ -269,7 +290,7 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
                                 fontSize: 20,
                                 fontWeight: FontWeight.w400)))),
                 TextButton(
-                    onPressed: () async {
+                    onPressed: ()async {
                       try {
                         Uint8List file = await pickImage(ImageSource.gallery);
                         if (file != null) {
@@ -292,7 +313,6 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
                 ),
                 InkWell(
                   onTap: () {
-                   
                     _uploadForm();
                   },
                   child: Container(
@@ -305,7 +325,7 @@ class _BuatPengaduanScreensState extends State<BuatPengaduanScreens> {
                       child: _isLoading
                           ? CircularProgressIndicator()
                           : Text(
-                              "Submit",
+                              "Edit",
                               style: GoogleFonts.rubik(
                                   textStyle: const TextStyle(
                                       color: Colors.white,

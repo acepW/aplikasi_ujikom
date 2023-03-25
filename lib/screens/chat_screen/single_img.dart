@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:full_screen_image_null_safe/full_screen_image_null_safe.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
@@ -44,8 +44,7 @@ class SingleImage extends StatelessWidget {
                     ),
                     color: isMe ? Colors.purple : Colors.grey.withOpacity(0.3),
                   ),
-                  child: FullScreenWidget(
-                    child: Image.network(
+                  child: Image.network(
                       message,
                       loadingBuilder: (BuildContext context, Widget child,
                           ImageChunkEvent? loadingProgress) {
@@ -57,7 +56,7 @@ class SingleImage extends StatelessWidget {
                         );
                       },
                     ),
-                  )),
+                  ),
             ),
           ),
           Align(

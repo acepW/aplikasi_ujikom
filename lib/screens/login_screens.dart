@@ -12,6 +12,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:quickalert/quickalert.dart';
 
 class LoginScreens extends StatefulWidget {
   const LoginScreens({super.key});
@@ -38,7 +39,7 @@ class _LoginScreensState extends State<LoginScreens> {
 
   Future<void> _submitFormOnLogin() async {
     final isValid = _formKey.currentState!.validate();
-     User? user = FirebaseAuth.instance.currentUser;
+    User? user = FirebaseAuth.instance.currentUser;
     FocusScope.of(context).unfocus();
 
     if (isValid) {
@@ -46,31 +47,34 @@ class _LoginScreensState extends State<LoginScreens> {
       setState(() {
         _isLoading = true;
       });
-      
 
       try {
         await authInstance.signInWithEmailAndPassword(
             email: _emailTextController.text.toLowerCase().trim(),
             password: _passTextController.text.trim());
 
-            
+        // ignore: use_build_context_synchronously
 
-
-     
-   
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => ValidasiScreens(),
-            ));
-        
+        ));
+
         print('Successfully logged in');
       } on FirebaseException catch (error) {
-        GlobalMethods.errorDialog(
-            subtitle: '${error.message}', context: context);
+        QuickAlert.show(
+          context: context,
+          type: QuickAlertType.error,
+          title: '${error.message}',
+        );
         setState(() {
           _isLoading = false;
         });
       } catch (error) {
-        GlobalMethods.errorDialog(subtitle: '$error', context: context);
+        QuickAlert.show(
+          context: context,
+          type: QuickAlertType.error,
+          title: '$error',
+        );
         setState(() {
           _isLoading = false;
         });
@@ -96,11 +100,17 @@ class _LoginScreensState extends State<LoginScreens> {
                   left: 15, right: 15, top: 70, bottom: 10),
               child: Column(
                 children: [
+                  Text("Aplikasi Pengaduan Sekolah",
+                      style: GoogleFonts.rubik(
+                          textStyle: const TextStyle(
+                              color: Colors.purple,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500))),
                   Container(
                     width: MediaQuery.of(context).size.width,
                     height: 200,
                     child: Image.asset(
-                      'assets/images/welcome.jpg',
+                      'assets/images/pengaduan.jpg',
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -202,7 +212,7 @@ class _LoginScreensState extends State<LoginScreens> {
                                       fontSize: 15,
                                       fontWeight: FontWeight.w500))),
                         ),
-                         const SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
                         Container(
@@ -211,19 +221,19 @@ class _LoginScreensState extends State<LoginScreens> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               TextButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      ForgetPasswordScreen()));
-                                        },
-                                        child: Text("Lupa Password?",
-                                            style: GoogleFonts.poppins(
-                                                textStyle: const TextStyle(
-                                                    color: Colors.purple,
-                                                    fontSize: 10,
-                                                    fontWeight: FontWeight.w500)))),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ForgetPasswordScreen()));
+                                  },
+                                  child: Text("Lupa Password?",
+                                      style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                              color: Colors.purple,
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.w500)))),
                             ],
                           ),
                         ),
@@ -232,6 +242,7 @@ class _LoginScreensState extends State<LoginScreens> {
                         ),
                         InkWell(
                           onTap: () {
+                            
                             _submitFormOnLogin();
                           },
                           child: Container(

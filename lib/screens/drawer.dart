@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quickalert/quickalert.dart';
 
 import '../const/firebase_const.dart';
 
@@ -92,11 +93,11 @@ class KeluarButton extends StatelessWidget {
         padding: const EdgeInsets.only(left: 10, right: 10),
         child: InkWell(
           onTap: () {
-            GlobalMethods.warningDialog(
-              context: context,
-              subtitle: "Yakin untuk keluar dari akun?",
-              title: "Keluar akun",
-              fct: ()async {
+            QuickAlert.show(
+                              context: context,
+                              type: QuickAlertType.confirm,
+                              text: "Yakin Untuk Log Out?",
+                              onConfirmBtnTap: ()async {
 
                  await authInstance.signOut();
                             Navigator.of(context).push(
@@ -107,7 +108,8 @@ class KeluarButton extends StatelessWidget {
                
                
               },
-            );
+                            );
+           
           },
           child: Row(
             children: [

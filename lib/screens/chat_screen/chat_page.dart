@@ -1,5 +1,6 @@
 import 'package:aplikasi_ujikom/model/user_model.dart';
-import 'package:aplikasi_ujikom/screens/chat_screen/halaman_pesan.dart';
+import 'package:aplikasi_ujikom/screens/chat_screen/halaman_pesan_petugas.dart';
+import 'package:aplikasi_ujikom/screens/chat_screen/halaman_pesan_user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +18,10 @@ class HalamanChatPage extends StatelessWidget {
             .doc(user.uid)
             .get();
         UserModel userModel = UserModel.fromSnap(userData);
-        return HalamanPesan(
+        return userModel.role =="user"?
+        HalamanPesanUser(
           userModel,
-        );
+        ):HalamanPesanPetugas(userModel);
       } else {
         return Container();
       }

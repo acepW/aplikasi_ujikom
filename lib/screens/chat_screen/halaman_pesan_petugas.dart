@@ -7,15 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-class HalamanPesan extends StatefulWidget {
+class HalamanPesanPetugas extends StatefulWidget {
   UserModel userModel;
-  HalamanPesan(this.userModel);
+  HalamanPesanPetugas(this.userModel);
 
   @override
-  State<HalamanPesan> createState() => _HalamanPesanState();
+  State<HalamanPesanPetugas> createState() => _HalamanPesanPetugasState();
 }
 
-class _HalamanPesanState extends State<HalamanPesan> {
+class _HalamanPesanPetugasState extends State<HalamanPesanPetugas> {
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -76,11 +76,14 @@ class _HalamanPesanState extends State<HalamanPesan> {
                             child: Center(
                               child: Column(
                                 children: [
-                                 Container(
-                                  width: 200,
-                                  height: 200,
-                                  decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/empty.png'))),
-                                 ),
+                                  Container(
+                                    width: 200,
+                                    height: 200,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/images/empty.png'))),
+                                  ),
                                   SizedBox(
                                     height: 30,
                                   ),
@@ -278,6 +281,7 @@ class _HalamanPesanState extends State<HalamanPesan> {
                                                               friend['uid'],
                                                           friendName:
                                                               friend['name'],
+                                                          friendEmail: friend['email'],    
                                                           friendImage: friend[
                                                                       'photoUrl']
                                                                   .toString()
@@ -296,103 +300,114 @@ class _HalamanPesanState extends State<HalamanPesan> {
                                                           friendUsername: friend[
                                                               'username'])));
                                         },
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  width: 0.3,
-                                                  color: Colors.grey)),
-                                          height: 72,
-                                          width:
-                                              MediaQuery.of(context).size.width,
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 24, right: 24),
-                                            child: Row(
-                                              children: [
-                                                CircleAvatar(
-                                                  backgroundImage: NetworkImage(
-                                                      friend['photoUrl']
-                                                              .toString()
-                                                              .isEmpty
-                                                          ? 'https://i.stack.imgur.com/l60Hf.png'
-                                                          : friend['photoUrl']),
-                                                ),
-                                                SizedBox(
-                                                  width: 8,
-                                                ),
-                                                Expanded(
-                                                  child: Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                            .size
-                                                            .width,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(left:5 ,right:5,bottom: 10 ),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                border: Border.all(
+                                                    width: 1,
+                                                    color: Colors.purple),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                      color: Colors.black
+                                                          .withOpacity(0.5),
+                                                      blurRadius: 10,
+                                                      offset: Offset(2, 2))
+                                                ]),
+                                            height: 72,
+                                            width:
+                                                MediaQuery.of(context).size.width,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 24, right: 24),
+                                              child: Row(
+                                                children: [
+                                                  CircleAvatar(
+                                                    backgroundImage: NetworkImage(
+                                                        friend['photoUrl']
+                                                                .toString()
+                                                                .isEmpty
+                                                            ? 'https://i.stack.imgur.com/l60Hf.png'
+                                                            : friend['photoUrl']),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 8,
+                                                  ),
+                                                  Expanded(
+                                                    child: Container(
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                              .size
+                                                              .width,
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets.only(
+                                                                top: 15),
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Container(
+                                                              height: 21,
+                                                              width: 300,
+                                                              child: Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                    friend[
+                                                                        'name'],
+                                                                    style: GoogleFonts.rubik(
+                                                                        textStyle: const TextStyle(
+                                                                            fontSize:
+                                                                                14,
+                                                                            fontWeight:
+                                                                                FontWeight.w600)),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            messageWidget
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    width: 50,
                                                     child: Padding(
                                                       padding:
                                                           const EdgeInsets.only(
                                                               top: 15),
                                                       child: Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .center,
                                                         children: [
-                                                          Container(
-                                                            height: 21,
-                                                            width: 300,
-                                                            child: Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Text(
-                                                                  friend[
-                                                                      'name'],
-                                                                  style: GoogleFonts.rubik(
-                                                                      textStyle: const TextStyle(
-                                                                          fontSize:
-                                                                              14,
-                                                                          fontWeight:
-                                                                              FontWeight.w600)),
-                                                                ),
-                                                              ],
+                                                          Text(
+                                                            DateFormat.jm()
+                                                                .format(last),
+                                                            style:
+                                                                GoogleFonts.rubik(
+                                                              textStyle:
+                                                                  const TextStyle(
+                                                                      fontSize:
+                                                                          10,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400),
                                                             ),
                                                           ),
-                                                          messageWidget
+                                                          SizedBox(height: 5),
+                                                          isMe
+                                                              ? messageSeenWidgetfriend
+                                                              : messageSeenWidgetMe
                                                         ],
                                                       ),
                                                     ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  width: 50,
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 15),
-                                                    child: Column(
-                                                      children: [
-                                                        Text(
-                                                          DateFormat.jm()
-                                                              .format(last),
-                                                          style:
-                                                              GoogleFonts.rubik(
-                                                            textStyle:
-                                                                const TextStyle(
-                                                                    fontSize:
-                                                                        10,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400),
-                                                          ),
-                                                        ),
-                                                        SizedBox(height: 5),
-                                                        isMe
-                                                            ? messageSeenWidgetfriend
-                                                            : messageSeenWidgetMe
-                                                      ],
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
+                                                  )
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -415,161 +430,6 @@ class _HalamanPesanState extends State<HalamanPesan> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class DikaPramana extends StatelessWidget {
-  final notifikasi;
-  const DikaPramana({
-    Key? key,
-    this.notifikasi,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 24, right: 24),
-      child: InkWell(
-        onTap: () {},
-        child: Container(
-          height: 72,
-          width: MediaQuery.of(context).size.width,
-          child: Row(
-            children: [
-              ClipOval(
-                child: Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/profil_dika.png'))),
-                ),
-              ),
-              SizedBox(
-                width: 8,
-              ),
-              Expanded(
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: 21,
-                          width: 300,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                overflow: TextOverflow.ellipsis,
-                                "Dika Pramana",
-                                style: GoogleFonts.poppins(
-                                    textStyle: const TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w600)),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          height: 18,
-                          width: 300,
-                          child: Text(
-                            overflow: TextOverflow.ellipsis,
-                            "Halo, Salam kenal ya!",
-                            style: GoogleFonts.poppins(
-                                textStyle: const TextStyle(
-                                    fontSize: 12, fontWeight: FontWeight.w400)),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                width: 30,
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 15),
-                  child: Column(
-                    children: [
-                      Text(
-                        "17.30",
-                        style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w400),
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      notifikasi
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class DibacaWidget extends StatelessWidget {
-  const DibacaWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 20,
-      width: 20,
-      decoration: const BoxDecoration(
-          image:
-              DecorationImage(image: AssetImage('assets/images/dibaca.png'))),
-    );
-  }
-}
-
-class BelumDibacaWidget extends StatelessWidget {
-  const BelumDibacaWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 20,
-      width: 20,
-      decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/images/belum_dibaca.png'))),
-    );
-  }
-}
-
-class NotifWidget extends StatelessWidget {
-  const NotifWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 20,
-      width: 20,
-      decoration:
-          const BoxDecoration(shape: BoxShape.circle, color: Colors.purple),
-      child: Center(
-          child: Text("1",
-              style: GoogleFonts.poppins(
-                  textStyle: const TextStyle(
-                      fontSize: 10,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500)))),
     );
   }
 }

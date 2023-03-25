@@ -1,5 +1,5 @@
 import 'package:aplikasi_ujikom/model/user_model.dart';
-import 'package:aplikasi_ujikom/screens/chat_screen/halaman_pesan.dart';
+
 import 'package:aplikasi_ujikom/screens/chat_screen/pesan_baru.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,7 +18,8 @@ class HalamanPesanBaruPage extends StatelessWidget {
             .doc(user.uid)
             .get();
         UserModel userModel = UserModel.fromSnap(userData);
-        return PesanBaruScreen(
+        return
+         PesanBaruScreen(
           userModel,
         );
       } else {

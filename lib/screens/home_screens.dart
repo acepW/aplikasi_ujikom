@@ -28,7 +28,7 @@ class _HomeScreensState extends State<HomeScreens> {
       appBar: AppBar(
         backgroundColor: Colors.purple,
         centerTitle: true,
-        title: Text("Aplikasi Ujikom",
+        title: Text("Chat Petugas",
             style: GoogleFonts.rubik(
                 textStyle: const TextStyle(
                     color: Colors.white,
@@ -36,15 +36,7 @@ class _HomeScreensState extends State<HomeScreens> {
                     fontWeight: FontWeight.w500))),
       ),
       body: HalamanChatPage(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return HalamanPesanBaruPage();
-          }));
-        },
-        backgroundColor: Colors.purple,
-        child: const Icon(Icons.search),
-      ),
+     
     );
   }
 }

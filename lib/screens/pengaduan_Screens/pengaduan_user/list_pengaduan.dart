@@ -41,6 +41,8 @@ class _ListPengaduanUserState extends State<ListPengaduanUser> {
             child: StreamBuilder(
               stream: FirebaseFirestore.instance
                   .collection('aduan')
+                  
+                 
                   .where('pengaduId', isEqualTo: user!.uid)
                   .snapshots(),
               builder: (context, AsyncSnapshot snapshot) {

@@ -128,6 +128,8 @@ class _PesanBaruScreenState extends State<PesanBaruScreen> {
                                           .docs[index]['uid'],
                                       friendName: (snapshot.data! as dynamic)
                                           .docs[index]['name'],
+                                           friendEmail: (snapshot.data! as dynamic)
+                                          .docs[index]['email'],
                                       friendImage: (snapshot.data! as dynamic)
                                               .docs[index]['photoUrl']
                                               .toString()
@@ -255,6 +257,8 @@ class _PesanBaruScreenState extends State<PesanBaruScreen> {
                                       currentUser: widget.userModel.uid,
                                       friendId: (snapshot.data! as dynamic)
                                           .docs[index]['uid'],
+                                          friendEmail: (snapshot.data! as dynamic)
+                                          .docs[index]['email'],
                                       friendName: (snapshot.data! as dynamic)
                                           .docs[index]['name'],
                                       friendImage: (snapshot.data! as dynamic)
