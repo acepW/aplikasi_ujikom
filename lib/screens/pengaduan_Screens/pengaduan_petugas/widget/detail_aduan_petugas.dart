@@ -1,6 +1,6 @@
 import 'package:aplikasi_ujikom/global_methods.dart';
 import 'package:aplikasi_ujikom/model/user_model.dart';
-import 'package:aplikasi_ujikom/screens/pengaduan_Screens/pengaduan_petugas/widget/print_pengaduan.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -149,20 +149,7 @@ class _DetailAduanPetugasState extends State<DetailAduanPetugas> {
               color: Colors.black,
             )),
         actions: [
-          IconButton(
-              onPressed: () {
-                printAduan().AduanPrint(
-                    widget.name,
-                    widget.tanggal,
-                    widget.status,
-                    widget.judul,
-                    widget.deskripsi,
-                    widget.imageUrl);
-              },
-              icon: Icon(
-                Icons.print,
-                color: Colors.black,
-              )),
+          
           IconButton(
               onPressed: () async{
                 await QuickAlert.show(
