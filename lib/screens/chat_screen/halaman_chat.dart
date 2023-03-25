@@ -17,6 +17,7 @@ class HalamanChat extends StatefulWidget {
   final String currentUser;
   final String friendId;
   final String friendUsername;
+  final String friendEmail;
   final String friendName;
   final String myImage;
   final String friendImage;
@@ -27,6 +28,7 @@ class HalamanChat extends StatefulWidget {
     required this.currentUser,
     required this.friendId,
     required this.friendName,
+    required this.friendEmail,
     required this.friendImage,
     required this.friendUsername,
     // required this.fcmtoken,
@@ -109,7 +111,7 @@ class _HalamanChatState extends State<HalamanChat> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
-                                  widget.friendUsername,
+                                  widget.friendEmail,
                                   style: GoogleFonts.rubik(
                                       textStyle: TextStyle(
                                           color: Colors.white.withOpacity(0.5),

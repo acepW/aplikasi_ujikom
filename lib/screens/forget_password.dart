@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quickalert/quickalert.dart';
 
 class ForgetPasswordScreen extends StatefulWidget {
   static const routeName = '/ForgetPasswordScreen';
@@ -126,6 +127,10 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
             ),
             InkWell(
               onTap: () {
+                QuickAlert.show(
+                              context: context,
+                              type: QuickAlertType.loading,
+                            );
                 _forgetPassFCT();
               },
               child: Container(
@@ -135,11 +140,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     color: Colors.purple,
                     borderRadius: BorderRadius.circular(15)),
                 child: Center(
-                  child: _isLoading
-                      ? CircularProgressIndicator(
-                          color: Colors.white,
-                        )
-                      : Text(
+                  child: Text(
                           "Reset Password",
                           style: GoogleFonts.poppins(
                               textStyle: const TextStyle(

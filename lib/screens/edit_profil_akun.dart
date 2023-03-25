@@ -13,6 +13,7 @@ import 'package:flutter/services.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:quickalert/quickalert.dart';
 
 import '../const/firebase_const.dart';
 
@@ -267,12 +268,13 @@ class _EditProfilScreenState extends State<EditProfilScreen> {
                     const SizedBox(
                       height: 45,
                     ),
-                    _isLoading
-                        ? CircularProgressIndicator(
-                            color: Colors.purple,
-                          )
-                        : InkWell(
+                    
+                         InkWell(
                             onTap: () async {
+                              QuickAlert.show(
+                              context: context,
+                              type: QuickAlertType.loading,
+                            );
                               String _uid = user!.uid;
                               String? photoUrl;
 

@@ -1,10 +1,12 @@
 import 'package:aplikasi_ujikom/global_methods.dart';
+import 'package:aplikasi_ujikom/screens/pengaduan_Screens/pengaduan_user/form_pengaduan_edit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:full_screen_image_null_safe/full_screen_image_null_safe.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:quickalert/quickalert.dart';
 
 class DetailAduanUSer extends StatefulWidget {
   const DetailAduanUSer(
@@ -26,31 +28,55 @@ class DetailAduanUSer extends StatefulWidget {
 class _DetailAduanUSerState extends State<DetailAduanUSer> {
   @override
   Widget build(BuildContext context) {
-     Widget status = Container();
+    Widget status = Container();
     switch (widget.status) {
       case "di periksa":
-        status = Text("Sedang Di Periksa",
-            style: GoogleFonts.rubik(
-                textStyle: TextStyle(
-                    color: Colors.red,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500)));
+        status = Container(
+          width: 200,
+          height: 50,
+          decoration: BoxDecoration(
+              color: Colors.orange, borderRadius: BorderRadius.circular(15)),
+          child: Center(
+            child: Text("Sedang Di Periksa",
+                style: GoogleFonts.rubik(
+                    textStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500))),
+          ),
+        );
         break;
       case "di verifikasi":
-        status = Text("Di Verifikasi",
-            style: GoogleFonts.rubik(
-                textStyle: TextStyle(
-                    color: Colors.green,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500)));
+        status = Container(
+          width: 200,
+          height: 50,
+          decoration: BoxDecoration(
+              color: Colors.green, borderRadius: BorderRadius.circular(15)),
+          child: Center(
+            child: Text("Di Verifikasi",
+                style: GoogleFonts.rubik(
+                    textStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500))),
+          ),
+        );
         break;
       case "di tolak":
-        status = Text("Di Tolak",
-            style: GoogleFonts.rubik(
-                textStyle: TextStyle(
-                    color: Colors.red,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500)));
+        status = Container(
+          width: 200,
+          height: 50,
+          decoration: BoxDecoration(
+              color: Colors.red, borderRadius: BorderRadius.circular(15)),
+          child: Center(
+            child: Text("Di Tolak",
+                style: GoogleFonts.rubik(
+                    textStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500))),
+          ),
+        );
         break;
     }
     return Scaffold(
@@ -87,12 +113,16 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                                   fontWeight: FontWeight.bold))),
                       Spacer(),
                       IconButton(
-                          onPressed: () {
-                            GlobalMethods.warningDialog(
+                          onPressed: () async {
+                            await QuickAlert.show(
                               context: context,
-                              subtitle: "Yakin menghapus Aduan?",
-                              title: "Hapus Aduan",
-                              fct: () async {
+                              type: QuickAlertType.confirm,
+                              title: 'Yakin Hapus Aduan?',
+                              text: "",
+                              confirmBtnText: 'Yes',
+                              customAsset: "assets/error.gif",
+                              cancelBtnText: 'No',
+                              onConfirmBtnTap: () async {
                                 await FirebaseFirestore.instance
                                     .collection('aduan')
                                     .doc(widget.postId)
@@ -100,9 +130,24 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
 
                                 return Navigator.pop(context);
                               },
+                              confirmBtnColor: Colors.green,
                             );
+                            return Navigator.pop(context);
                           },
-                          icon: Icon(IconlyLight.delete))
+                          icon: Icon(IconlyLight.delete)),
+                      IconButton(
+                          onPressed: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return EditPengaduanScreens(
+                                judul: widget.judul,
+                                deskripsi: widget.deskripsi,
+                                image: widget.imageUrl,
+                                id: widget.postId,
+                              );
+                            }));
+                          },
+                          icon: Icon(IconlyLight.edit))
                     ],
                   ),
                 ),
@@ -111,8 +156,8 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text("Pada ${ DateFormat.yMd().add_jm()
-                                                              .format(widget.tanggal)}",
+                      Text(
+                          "Pada ${DateFormat.yMd().add_jm().format(widget.tanggal)}",
                           style: GoogleFonts.rubik(
                               textStyle: const TextStyle(
                                   color: Colors.black,
@@ -128,64 +173,84 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                   width: MediaQuery.of(context).size.width,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      status
-                    ],
+                    children: [status],
                   ),
                 ),
                 SizedBox(
                   height: 25,
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black.withOpacity(0.5),
+                            blurRadius: 10,
+                            offset: Offset(2, 6))
+                      ]),
+                  child: Column(
                     children: [
-                      Flexible(
-                        child: Text(widget.judul,
-                            textAlign: TextAlign.start,
-                            style: GoogleFonts.rubik(
-                                textStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.w500))),
+                      Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: Colors.purple.withOpacity(0.7),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(widget.judul,
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.rubik(
+                                    textStyle: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold))),
+                          ],
+                        ),
                       ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 10,),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Flexible(
-                        child: Text(widget.deskripsi,
-                            style: GoogleFonts.rubik(
-                                textStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400))),
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              top: 10, left: 10, right: 10, bottom: 10),
+                          child: Text(widget.deskripsi,
+                              textAlign: TextAlign.start,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 5,
+                              style: GoogleFonts.rubik(
+                                  textStyle: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w400))),
+                        ),
                       ),
+                      widget.imageUrl == ""
+                          ? Container()
+                          : Padding(
+                              padding:
+                                  const EdgeInsets.only(bottom: 10, top: 20),
+                              child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 200,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Image.network(
+                                    widget.imageUrl,
+                                    fit: BoxFit.contain,
+                                  )),
+                            ),
                     ],
                   ),
                 ),
                 SizedBox(
                   height: 20,
                 ),
-                widget.imageUrl == ""
-                    ? Container()
-                    : Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 200,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10)),
-                        child: FullScreenWidget(
-                            child: Image.network(
-                          widget.imageUrl,
-                          fit: BoxFit.fill,
-                        )),
-                      ),
+                Container(
+                  height: 5,
+                  color: Colors.purple,
+                ),
                 SizedBox(
                   height: 20,
                 ),
@@ -240,19 +305,19 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                                     itemBuilder: (context, index) {
                                       String name =
                                           snapshot.data.docs[index]['name'];
-                                      String tanggapan =
-                                          snapshot.data.docs[index]['tanggapan'];
+                                      String tanggapan = snapshot
+                                          .data.docs[index]['tanggapan'];
                                       var time = snapshot
                                           .data.docs[index]['createdAt']
                                           .toDate();
-                      
+
                                       String userId =
                                           snapshot.data.docs[index]['userId'];
                                       String photoUrl =
                                           snapshot.data.docs[index]['photoUrl'];
                                       String tanggapanId = snapshot
                                           .data.docs[index]['tanggapanId'];
-                      
+
                                       return Padding(
                                         padding: const EdgeInsets.only(top: 7),
                                         child: Container(
@@ -271,7 +336,8 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                                                       backgroundColor:
                                                           Colors.grey,
                                                       backgroundImage:
-                                                          NetworkImage(photoUrl)),
+                                                          NetworkImage(
+                                                              photoUrl)),
                                               Expanded(
                                                 child: Container(
                                                   width: MediaQuery.of(context)
@@ -279,11 +345,13 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                                                       .width,
                                                   decoration: BoxDecoration(
                                                     borderRadius:
-                                                        BorderRadius.circular(10),
+                                                        BorderRadius.circular(
+                                                            10),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsets.all(8.0),
+                                                        const EdgeInsets.all(
+                                                            8.0),
                                                     child: Column(
                                                       crossAxisAlignment:
                                                           CrossAxisAlignment
@@ -300,7 +368,8 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                                                                     .start,
                                                             children: [
                                                               Flexible(
-                                                                child: Text(name,
+                                                                child: Text(
+                                                                    name,
                                                                     textAlign:
                                                                         TextAlign
                                                                             .center,

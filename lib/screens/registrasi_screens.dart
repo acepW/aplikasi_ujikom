@@ -10,6 +10,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:quickalert/quickalert.dart';
 
 class RegistrasiScreens extends StatefulWidget {
   const RegistrasiScreens({super.key});
@@ -305,6 +306,8 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                 ),
                 InkWell(
                   onTap: () {
+                    
+                   
                     signUpUser();
                   },
                   child: Container(
@@ -314,18 +317,16 @@ class _RegistrasiScreensState extends State<RegistrasiScreens> {
                         color: Colors.purple,
                         borderRadius: BorderRadius.circular(15)),
                     child: Center(
-                      child: _isLoading
-                          ? CircularProgressIndicator(
-                              color: Colors.white,
-                            )
-                          : Text(
+                      child:_isLoading?
+                      CircularProgressIndicator(color: Colors.white,):
+                        Text(
                               "Registrasi",
                               style: GoogleFonts.rubik(
                                   textStyle: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w500)),
-                            ),
+                            )
                     ),
                   ),
                 ),

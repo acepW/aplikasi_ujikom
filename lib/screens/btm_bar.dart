@@ -22,8 +22,9 @@ class BottomBarScreen extends StatefulWidget {
 class _BottomBarScreenState extends State<BottomBarScreen> {
   int _selectedIndex = 0;
   final List<Map<String, dynamic>> _pages = [
-    {'page': const HomeScreens(), 'title': 'Home Screen'},
+    
     {'page': PengaduanScreens(), 'title': 'Pengaduan Screen'},
+    {'page': const HomeScreens(), 'title': 'Home Screen'},
     
   ];
   void _selectedPage(int index) {
@@ -52,15 +53,16 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
         selectedItemColor: Colors.black87,
         onTap: _selectedPage,
         items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon:
-                Icon(_selectedIndex == 0 ? IconlyBold.message : IconlyLight.message,color: Colors.purple,),
-            label: "Chat",
-          ),
+          
           BottomNavigationBarItem(
             icon: Icon(
-                _selectedIndex == 1 ? IconlyBold.category : IconlyLight.category,color: Colors.purple,),
+                _selectedIndex == 0 ? IconlyBold.category : IconlyLight.category,color: Colors.purple,),
             label: "Pengaduan",
+          ),
+          BottomNavigationBarItem(
+            icon:
+                Icon(_selectedIndex == 1 ? IconlyBold.message : IconlyLight.message,color: Colors.purple,),
+            label: "Chat",
           ),
           
         ],
