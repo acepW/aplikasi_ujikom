@@ -212,7 +212,7 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                           children: [
                             Flexible(
                               child: Text(widget.judul,
-                                  overflow: TextOverflow.ellipsis,
+                               
                                   style: GoogleFonts.rubik(
                                       textStyle: const TextStyle(
                                           color: Colors.white,
