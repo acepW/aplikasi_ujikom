@@ -192,12 +192,21 @@ class _DetailAduanPetugasState extends State<DetailAduanPetugas> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text("Ditulis oleh ${widget.name}",
-                          style: GoogleFonts.rubik(
-                              textStyle: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold))),
+                      Container(
+                        width:250 ,
+                        child: Row(
+                          children: [
+                            Flexible(
+                              child: Text("Ditulis oleh ${widget.name}",
+                                  style: GoogleFonts.rubik(
+                                      textStyle: const TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold))),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -340,13 +349,15 @@ class _DetailAduanPetugasState extends State<DetailAduanPetugas> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(widget.judul,
-                                overflow: TextOverflow.ellipsis,
-                                style: GoogleFonts.rubik(
-                                    textStyle: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold))),
+                            Flexible(
+                              child: Text(widget.judul,
+                                 
+                                  style: GoogleFonts.rubik(
+                                      textStyle: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold))),
+                            ),
                           ],
                         ),
                       ),

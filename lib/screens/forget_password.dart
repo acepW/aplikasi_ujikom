@@ -127,10 +127,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
             ),
             InkWell(
               onTap: () {
-                QuickAlert.show(
-                              context: context,
-                              type: QuickAlertType.loading,
-                            );
+                
                 _forgetPassFCT();
               },
               child: Container(
@@ -140,7 +137,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     color: Colors.purple,
                     borderRadius: BorderRadius.circular(15)),
                 child: Center(
-                  child: Text(
+                  child:_isLoading?CircularProgressIndicator(color: Colors.white,): Text(
                           "Reset Password",
                           style: GoogleFonts.poppins(
                               textStyle: const TextStyle(
