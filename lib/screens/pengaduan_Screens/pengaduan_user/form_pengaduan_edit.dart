@@ -23,7 +23,12 @@ class EditPengaduanScreens extends StatefulWidget {
   final String deskripsi;
   final String image;
   final String id;
-  const EditPengaduanScreens({super.key, required this.judul, required this.deskripsi, required this.image, required this.id});
+  const EditPengaduanScreens(
+      {super.key,
+      required this.judul,
+      required this.deskripsi,
+      required this.image,
+      required this.id});
 
   @override
   State<EditPengaduanScreens> createState() => _EditPengaduanScreensState();
@@ -33,18 +38,17 @@ class _EditPengaduanScreensState extends State<EditPengaduanScreens> {
   Uint8List? _image;
 
   final _formKey = GlobalKey<FormState>();
-   final TextEditingController judulTextController =
+  final TextEditingController judulTextController =
       TextEditingController(text: "");
-      final TextEditingController deskripsiTextController =
+  final TextEditingController deskripsiTextController =
       TextEditingController(text: "");
-
 
   Uint8List? _pickedImage;
   String? imageUrl;
   Uint8List webImage = Uint8List(8);
 
   bool _obscureText = true;
-@override
+  @override
   void initState() {
     // TODO: implement initState
     judulTextController.text = widget.judul;
@@ -63,18 +67,13 @@ class _EditPengaduanScreensState extends State<EditPengaduanScreens> {
 
   bool _isLoading = false;
 
-
-
-void _uploadForm() async {
+  void _uploadForm() async {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
 
     if (isValid) {
       _formKey.currentState!.save();
 
-     
-
-    
       try {
         setState(() {
           _isLoading = true;
@@ -86,15 +85,15 @@ void _uploadForm() async {
               .uploadImageToStorage("aduanImages", _pickedImage!, true);
         }
 
-        await FirebaseFirestore.instance.collection('aduan').doc(widget.id).update({
-         
+        await FirebaseFirestore.instance
+            .collection('aduan')
+            .doc(widget.id)
+            .update({
           'imageUrl': imageUrl,
-         
           'judul': judulTextController.text,
           'deskripsi': deskripsiTextController.text,
-          
         });
-       
+
         Fluttertoast.showToast(
           msg: "Edit succefully",
           toastLength: Toast.LENGTH_LONG,
@@ -123,7 +122,6 @@ void _uploadForm() async {
       }
     }
   }
-
 
   selectImage() async {
     Uint8List im = await pickImage(ImageSource.gallery);
@@ -158,7 +156,6 @@ void _uploadForm() async {
             key: _formKey,
             child: Column(
               children: [
-               
                 TextFormField(
                   textInputAction: TextInputAction.next,
                   controller: judulTextController,
@@ -186,7 +183,6 @@ void _uploadForm() async {
                             const BorderSide(width: 1, color: Colors.purple),
                         borderRadius: BorderRadius.circular(5),
                       ),
-                      
                       hintText: "Judul Pengaduan",
                       hintStyle: GoogleFonts.rubik(
                           textStyle: const TextStyle(
@@ -234,7 +230,7 @@ void _uploadForm() async {
                 SizedBox(
                   height: 15,
                 ),
-                Text("Tambahkan Gambar Jika Ada",
+                Text("Edit Gambar",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.rubik(
                         textStyle: const TextStyle(
@@ -244,44 +240,49 @@ void _uploadForm() async {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    height: MediaQuery.of(context).size.width > 650
-                        ? 350
-                        : MediaQuery.of(context).size.width * 0.45,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).scaffoldBackgroundColor,
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    child:widget.image != ""
-                            ? Container(
-                            height: 200,
-                            width: 270,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                image: DecorationImage(
-                                  fit: BoxFit.fill,
-                                  image: AssetImage(widget.image),
-                                )),
-                          )
-                            : _pickedImage == null
-                        ? dottedBorder(color: Colors.black)
-                        : Container(
-                            height: 200,
-                            width: 270,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                image: DecorationImage(
-                                  fit: BoxFit.fill,
-                                  image: MemoryImage(_pickedImage!),
-                                )),
-                          ),
-                  ),
+                      height: MediaQuery.of(context).size.width > 650
+                          ? 350
+                          : MediaQuery.of(context).size.width * 0.45,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      child: _pickedImage != null
+                          ? Container(
+                              height: 200,
+                              width: 270,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  image: DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image: MemoryImage(_pickedImage!),
+                                  )),
+                            )
+                          : widget.image != ""
+                              ? Container(
+                                  height: 200,
+                                  width: 270,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      image: DecorationImage(
+                                        fit: BoxFit.fill,
+                                        image: NetworkImage(widget.image),
+                                      )),
+                                )
+                              : dottedBorder(color: Colors.black)),
                 ),
                 TextButton(
-                    onPressed: () {
-                      setState(() {
-                        _pickedImage = null;
-                        webImage = Uint8List(8);
-                      });
+                    onPressed: () async {
+                      try {
+                        Uint8List file = await pickImage(ImageSource.gallery);
+                        if (file != null) {
+                          setState(() {
+                            _pickedImage = file;
+                          });
+                        }
+                      } catch (e) {
+                        print(e);
+                      }
                     },
                     child: Text("Clear",
                         style: GoogleFonts.rubik(
@@ -290,7 +291,7 @@ void _uploadForm() async {
                                 fontSize: 20,
                                 fontWeight: FontWeight.w400)))),
                 TextButton(
-                    onPressed: ()async {
+                    onPressed: () async {
                       try {
                         Uint8List file = await pickImage(ImageSource.gallery);
                         if (file != null) {

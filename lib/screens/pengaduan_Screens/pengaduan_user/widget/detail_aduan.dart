@@ -229,8 +229,8 @@ class _DetailAduanUSerState extends State<DetailAduanUSer> {
                               top: 10, left: 10, right: 10, bottom: 10),
                           child: Text(widget.deskripsi,
                               textAlign: TextAlign.start,
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 5,
+                              
+                           
                               style: GoogleFonts.rubik(
                                   textStyle: const TextStyle(
                                       color: Colors.black,
